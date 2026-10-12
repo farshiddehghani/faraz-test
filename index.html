@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1726">
-  <meta name="description" content="فراز تست؛ گروه تست و تحویل تأسیسات برقی، تست ارت، عایقی، پیوستگی و آزمون‌های تخصصی برق.">
+  <meta name="theme-color" content="#07111e">
+  <meta name="description" content="فراز تست؛ گروه تخصصی تست و تحویل تأسیسات برقی، تست ارت، عایقی، پیوستگی و آزمون‌های تخصصی برق.">
 
   <title>فراز تست | FARAZ TEST</title>
 
@@ -17,6 +17,7 @@
       --text: #f4f7fb;
       --muted: #b6c3d3;
       --border: #293b50;
+      --cyan: #42c7e8;
     }
 
     * {
@@ -25,12 +26,14 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 20px;
     }
 
     body {
       margin: 0;
       background:
-        radial-gradient(ellipse at top, #18314b 0%, var(--bg) 60%);
+        radial-gradient(ellipse at top right, #183652 0%, transparent 48%),
+        linear-gradient(145deg, #07111e, #0a1726 60%, #07111e);
       color: var(--text);
       font-family: Tahoma, "Segoe UI", Arial, sans-serif;
       line-height: 1.9;
@@ -42,52 +45,221 @@
     }
 
     .container {
-      width: min(900px, calc(100% - 28px));
+      width: min(1050px, calc(100% - 32px));
       margin: auto;
-      padding: 25px 0;
+      padding: 20px 0;
     }
 
-    .hero {
-      text-align: center;
-      padding: 32px 12px;
+    /* نوار بالای سایت */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #0b1929eF;
     }
 
-    .logo {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+    }
+
+    .brand-icon {
       display: grid;
       place-items: center;
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 15px;
-      border-radius: 23px;
+      width: 43px;
+      height: 43px;
+      border-radius: 12px;
       background: var(--gold);
-      color: #091523;
-      font-size: 44px;
-      font-weight: bold;
-      box-shadow: 0 12px 35px #0005;
+      color: #07111e;
+      font-size: 26px;
+    }
+
+    .brand-name {
+      font-size: 17px;
+    }
+
+    .brand-en {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
+      direction: ltr;
+    }
+
+    .nav {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      color: var(--gold);
+    }
+
+    /* بخش معرفی */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 35px;
+      padding: 55px 8px 45px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 5px 13px;
+      margin-bottom: 12px;
+      border: 1px solid #e5a52e55;
+      border-radius: 30px;
+      color: var(--gold);
+      background: #e5a52e0d;
+      font-size: 12px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(30px, 6vw, 46px);
+      font-size: clamp(35px, 5vw, 54px);
       line-height: 1.5;
     }
 
     .english-name {
       color: var(--gold);
-      font-size: 22px;
+      font-size: clamp(22px, 3vw, 29px);
       font-weight: bold;
       letter-spacing: 2px;
       direction: ltr;
     }
 
-    .subtitle {
-      margin: 5px 0;
+    .hero-description {
+      max-width: 510px;
       color: var(--muted);
+      font-size: 15px;
+      margin: 12px 0 22px;
     }
 
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 290px;
+      overflow: hidden;
+      border: 1px solid #3b5872;
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at center, #214361, #0b1929 72%);
+      box-shadow: 0 24px 60px #0004;
+    }
+
+    .hero-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 290px;
+      max-height: 390px;
+      object-fit: cover;
+    }
+
+    .image-caption {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      left: 14px;
+      padding: 10px 14px;
+      border: 1px solid #ffffff20;
+      border-radius: 13px;
+      background: #07111edc;
+      backdrop-filter: blur(8px);
+      font-size: 12px;
+    }
+
+    /* دکمه‌ها */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 47px;
+      padding: 10px 18px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      background: var(--gold);
+      color: #101a26;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.2s, filter 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .btn.secondary {
+      border-color: #31475e;
+      background: #172b40;
+      color: var(--text);
+    }
+
+    .btn.secondary:hover {
+      border-color: var(--cyan);
+    }
+
+    /* مزیت‌ها */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0 0 35px;
+    }
+
+    .feature {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #102136a8;
+    }
+
+    .feature-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 7px;
+      border-radius: 12px;
+      background: #42c7e815;
+      color: var(--cyan);
+      font-size: 22px;
+    }
+
+    .feature h3 {
+      margin: 0 0 4px;
+      font-size: 15px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* کارت‌های اصلی */
     .card {
-      margin: 17px 0;
-      padding: clamp(18px, 4vw, 30px);
+      margin: 20px 0;
+      padding: clamp(20px, 4vw, 32px);
       border: 1px solid var(--border);
       border-radius: 22px;
       background: linear-gradient(145deg, #102136, #0b1726);
@@ -95,8 +267,8 @@
     }
 
     h2 {
-      margin: 0 0 20px;
-      font-size: 23px;
+      margin: 0 0 23px;
+      font-size: clamp(21px, 3vw, 26px);
     }
 
     h2::after {
@@ -109,112 +281,180 @@
       background: var(--gold);
     }
 
+    .section-description {
+      margin: -12px 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* خدمات */
     .services {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      gap: 13px;
     }
 
     .service {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      padding: 13px;
+      gap: 12px;
+      padding: 16px;
       border: 1px solid #ffffff12;
-      border-radius: 13px;
-      background: #ffffff06;
+      border-radius: 14px;
+      background: #ffffff05;
+      transition: border-color 0.2s, background 0.2s;
     }
 
-    .check {
+    .service:hover {
+      border-color: #e5a52e70;
+      background: #e5a52e08;
+    }
+
+    .service-number {
+      display: grid;
+      place-items: center;
+      flex: 0 0 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #e5a52e16;
       color: var(--gold);
+      font-size: 13px;
       font-weight: bold;
-      font-size: 19px;
     }
 
+    .service-title {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .service-subtitle {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* تماس */
     .phones {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 13px;
+      margin-bottom: 20px;
     }
 
     .phone {
       display: block;
-      padding: 13px;
+      padding: 15px;
       border: 1px solid var(--border);
-      border-radius: 13px;
-      background: #ffffff08;
+      border-radius: 14px;
+      background: #ffffff06;
       text-align: center;
       direction: ltr;
-      font-size: 19px;
+      font-size: 20px;
       font-weight: bold;
+      transition: border-color 0.2s;
     }
 
     .phone:hover {
       border-color: var(--gold);
     }
 
-    .buttons {
+    .phone-label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: normal;
+      direction: rtl;
+    }
+
+    .contact-buttons {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 11px;
+      gap: 12px;
     }
 
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 49px;
-      padding: 11px 14px;
-      border: 1px solid transparent;
-      border-radius: 13px;
-      background: var(--gold);
-      color: #101a26;
-      text-align: center;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.07);
-    }
-
-    .btn.secondary {
-      border-color: #31475e;
-      background: #172b40;
-      color: var(--text);
-    }
-
-    .btn.disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      pointer-events: none;
+    .contact-buttons .btn {
+      width: 100%;
     }
 
     .note {
-      margin: 16px 0 0;
+      margin: 17px 0 0;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     footer {
-      padding: 20px 5px;
+      margin-top: 30px;
+      padding: 25px 10px;
+      border-top: 1px solid var(--border);
       color: #8fa1b6;
       text-align: center;
-      font-size: 13px;
+      font-size: 12px;
     }
 
-    @media (max-width: 580px) {
-      .services,
-      .phones,
-      .buttons {
-        grid-template-columns: 1fr;
+    footer strong {
+      color: var(--gold);
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        gap: 12px;
+        font-size: 12px;
       }
 
       .hero {
-        padding-top: 20px;
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 38px 3px 28px;
+      }
+
+      .hero-image-wrap {
+        min-height: 230px;
+      }
+
+      .hero-image {
+        min-height: 230px;
+        max-height: 340px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: calc(100% - 22px);
+      }
+
+      .topbar {
+        padding: 10px 12px;
+      }
+
+      .brand-name {
+        font-size: 15px;
+      }
+
+      .nav {
+        gap: 10px;
+      }
+
+      .services,
+      .phones,
+      .contact-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .service {
+        padding: 13px;
+      }
+
+      .hero-actions .btn {
+        flex: 1 1 100%;
+      }
+
+      .phone {
+        font-size: 19px;
       }
     }
   </style>
@@ -223,85 +463,174 @@
 <body>
   <main class="container">
 
-    <!-- معرفی مجموعه -->
-    <header class="hero">
-      <div class="logo" aria-hidden="true">ϟ</div>
+    <!-- سربرگ -->
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="فراز تست">
+        <span class="brand-icon" aria-hidden="true">ϟ</span>
+        <span>
+          <span class="brand-name">فراز تست</span>
+          <span class="brand-en">FARAZ TEST</span>
+        </span>
+      </a>
 
-      <h1>فراز تست</h1>
-
-      <div class="english-name">FARAZ TEST</div>
-
-      <p class="subtitle">
-        گروه تست و تحویل تأسیسات برقی
-      </p>
-
-      <p class="subtitle" dir="ltr">
-        Electrical Testing &amp; Commissioning
-      </p>
+      <nav class="nav" aria-label="منوی اصلی">
+        <a href="#services">خدمات</a>
+        <a href="#contact">تماس با ما</a>
+      </nav>
     </header>
 
-    <!-- خدمات تخصصی -->
-    <section class="card" id="services">
-      <h2>خدمات تخصصی ما</h2>
+    <!-- معرفی و تصویر -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">خدمات تخصصی مهندسی برق</span>
 
-      <div class="services">
-        <div class="service">
-          <span class="check">✓</span>
-          <span>تست و اندازه‌گیری مقاومت الکترود زمین</span>
+        <h1>فراز تست</h1>
+
+        <div class="english-name">FARAZ TEST</div>
+
+        <p class="hero-description">
+          گروه تست و تحویل تأسیسات برقی؛ ارائه خدمات آزمون،
+          اندازه‌گیری و بررسی عملکرد تجهیزات و تأسیسات الکتریکی
+          با تمرکز بر ایمنی و اطمینان از عملکرد صحیح سیستم.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#contact">☎ ارتباط با ما</a>
+          <a class="btn secondary" href="#services">مشاهده خدمات ↓</a>
         </div>
+      </div>
 
-        <div class="service">
-          <span class="check">✓</span>
-          <span>تست پیوستگی هادی حفاظتی و همبندی اصلی و اضافی</span>
-        </div>
-
-        <div class="service">
-          <span class="check">✓</span>
-          <span>تست مقاومت عایقی</span>
-        </div>
-
-        <div class="service">
-          <span class="check">✓</span>
-          <span>تست امپدانس حلقه اتصال کوتاه</span>
-        </div>
-
-        <div class="service">
-          <span class="check">✓</span>
-          <span>تست عملکرد کلید جریان باقیمانده (RCD)</span>
-        </div>
-
-        <div class="service">
-          <span class="check">✓</span>
-          <span>تست پلاریته (قطبیت)</span>
-        </div>
-
-        <div class="service">
-          <span class="check">✓</span>
-          <span>تست افت ولتاژ</span>
-        </div>
-
-        <div class="service">
-          <span class="check">✓</span>
-          <span>تست توالی فاز</span>
+      <div class="hero-image-wrap">
+        <img
+          class="hero-image"
+          src="faraz-hero.jfif"
+          alt="فراز تست، خدمات تست و تحویل تأسیسات برقی"
+          fetchpriority="high"
+          onerror="this.style.display='none';"
+        >
+        <div class="image-caption">
+          <strong>Electrical Testing &amp; Commissioning</strong>
+          <br>
+          <span>گروه تست و تحویل تأسیسات برقی</span>
         </div>
       </div>
     </section>
 
-    <!-- اطلاعات تماس -->
+    <!-- مزیت‌های خدمات -->
+    <section class="features" aria-label="ویژگی‌های خدمات">
+      <div class="feature">
+        <span class="feature-icon" aria-hidden="true">⌁</span>
+        <h3>اندازه‌گیری و آزمون</h3>
+        <p>بررسی پارامترهای الکتریکی و عملکرد تجهیزات</p>
+      </div>
+
+      <div class="feature">
+        <span class="feature-icon" aria-hidden="true">✓</span>
+        <h3>توجه به ایمنی</h3>
+        <p>بررسی پیوستگی حفاظتی و الزامات ایمنی برق</p>
+      </div>
+
+      <div class="feature">
+        <span class="feature-icon" aria-hidden="true">⚡</span>
+        <h3>خدمات تخصصی برق</h3>
+        <p>آزمون‌های متنوع تأسیسات الکتریکی</p>
+      </div>
+    </section>
+
+    <!-- خدمات تخصصی -->
+    <section class="card" id="services">
+      <h2>خدمات تخصصی ما</h2>
+      <p class="section-description">
+        مجموعه‌ای از آزمون‌ها و اندازه‌گیری‌های تأسیسات برقی
+      </p>
+
+      <div class="services">
+        <div class="service">
+          <span class="service-number">۰۱</span>
+          <div>
+            <div class="service-title">تست مقاومت الکترود زمین</div>
+            <div class="service-subtitle">Earth Electrode Resistance Test</div>
+          </div>
+        </div>
+
+        <div class="service">
+          <span class="service-number">۰۲</span>
+          <div>
+            <div class="service-title">تست پیوستگی هادی حفاظتی و همبندی</div>
+            <div class="service-subtitle">Protective Conductor Continuity</div>
+          </div>
+        </div>
+
+        <div class="service">
+          <span class="service-number">۰۳</span>
+          <div>
+            <div class="service-title">تست مقاومت عایقی</div>
+            <div class="service-subtitle">Insulation Resistance Test</div>
+          </div>
+        </div>
+
+        <div class="service">
+          <span class="service-number">۰۴</span>
+          <div>
+            <div class="service-title">تست امپدانس حلقه اتصال کوتاه</div>
+            <div class="service-subtitle">Earth Fault Loop Impedance Test</div>
+          </div>
+        </div>
+
+        <div class="service">
+          <span class="service-number">۰۵</span>
+          <div>
+            <div class="service-title">تست عملکرد کلید جریان باقیمانده</div>
+            <div class="service-subtitle">RCD Test</div>
+          </div>
+        </div>
+
+        <div class="service">
+          <span class="service-number">۰۶</span>
+          <div>
+            <div class="service-title">تست پلاریته (قطبیت)</div>
+            <div class="service-subtitle">Polarity Test</div>
+          </div>
+        </div>
+
+        <div class="service">
+          <span class="service-number">۰۷</span>
+          <div>
+            <div class="service-title">تست افت ولتاژ</div>
+            <div class="service-subtitle">Voltage Drop Test</div>
+          </div>
+        </div>
+
+        <div class="service">
+          <span class="service-number">۰۸</span>
+          <div>
+            <div class="service-title">تست توالی فاز</div>
+            <div class="service-subtitle">Phase Sequence Test</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- تماس با ما -->
     <section class="card" id="contact">
       <h2>ارتباط با ما</h2>
+      <p class="section-description">
+        برای دریافت اطلاعات بیشتر درباره خدمات تست و تحویل تأسیسات برقی با ما تماس بگیرید.
+      </p>
 
       <div class="phones">
         <a class="phone" href="tel:+989915678210">
+          <span class="phone-label">شماره تماس اول</span>
           09915678210
         </a>
 
         <a class="phone" href="tel:+989303490051">
+          <span class="phone-label">شماره تماس دوم</span>
           09303490051
         </a>
       </div>
 
-      <div class="buttons">
+      <div class="contact-buttons">
         <a class="btn" href="tel:+989915678210">
           ☎ تماس با ما
         </a>
@@ -310,22 +639,22 @@
           ✉ ارسال پیامک
         </a>
 
-        <a class="btn" href="https://wa.me/989915678210"
-           target="_blank" rel="noopener noreferrer">
+        <a
+          class="btn"
+          href="https://wa.me/989915678210"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           واتساپ
         </a>
 
-        <a class="btn secondary"
-           href="https://ble.ir/farshid_dehghani"
-           target="_blank" rel="noopener noreferrer">
+        <a
+          class="btn secondary"
+          href="https://ble.ir/farshid_dehghani"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           ارتباط از طریق بله
-        </a>
-
-        <a class="btn secondary disabled"
-           href="#"
-           aria-disabled="true"
-           title="لینک تلگرام هنوز مشخص نشده">
-          تلگرام (به‌زودی)
         </a>
 
         <a class="btn secondary" href="contact.vcf" download>
@@ -334,13 +663,12 @@
       </div>
 
       <p class="note">
-        برای ارتباط از طریق تلگرام، پس از مشخص شدن لینک حساب،
-        این دکمه فعال خواهد شد.
+        با انتخاب گزینه «ذخیره مخاطب»، اطلاعات تماس فراز تست را به دفترچه تلفن خود اضافه کنید.
       </p>
     </section>
 
     <footer>
-      © <span id="year"></span> FARAZ TEST
+      © <span id="year"></span> <strong>FARAZ TEST</strong>
       <br>
       Electrical Testing &amp; Commissioning
     </footer>
