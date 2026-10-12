@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07111e">
-  <meta name="description" content="فراز تست؛ گروه تخصصی تست و تحویل تأسیسات برقی، تست ارت، عایقی، پیوستگی و آزمون‌های تخصصی برق.">
+  <meta name="description" content="فراز تست؛ گروه تست و تحویل تأسیسات برقی، آزمون‌های تخصصی برق و ارائه گزارش‌های فنی مستند.">
 
   <title>فراز تست | FARAZ TEST</title>
 
@@ -50,7 +50,6 @@
       padding: 20px 0;
     }
 
-    /* نوار بالای سایت */
     .topbar {
       display: flex;
       justify-content: space-between;
@@ -59,7 +58,7 @@
       padding: 12px 18px;
       border: 1px solid var(--border);
       border-radius: 16px;
-      background: #0b1929eF;
+      background: #0b1929ef;
     }
 
     .brand {
@@ -104,13 +103,25 @@
       color: var(--gold);
     }
 
-    /* بخش معرفی */
+    /* معرفی مجموعه بدون تصویر */
     .hero {
+      padding: 54px 12px 35px;
+      text-align: center;
+    }
+
+    .hero-logo {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: center;
-      gap: 35px;
-      padding: 55px 8px 45px;
+      place-items: center;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 16px;
+      border: 1px solid #ffffff20;
+      border-radius: 23px;
+      background: linear-gradient(145deg, #f2c45f, #d99218);
+      color: #07111e;
+      font-size: 44px;
+      font-weight: bold;
+      box-shadow: 0 12px 35px #0005;
     }
 
     .eyebrow {
@@ -138,50 +149,23 @@
       direction: ltr;
     }
 
+    .hero-subtitle {
+      margin: 5px 0;
+      color: var(--muted);
+    }
+
     .hero-description {
-      max-width: 510px;
+      max-width: 720px;
+      margin: 14px auto 25px;
       color: var(--muted);
       font-size: 15px;
-      margin: 12px 0 22px;
     }
 
     .hero-actions {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
-    }
-
-    .hero-image-wrap {
-      position: relative;
-      min-height: 290px;
-      overflow: hidden;
-      border: 1px solid #3b5872;
-      border-radius: 25px;
-      background:
-        radial-gradient(circle at center, #214361, #0b1929 72%);
-      box-shadow: 0 24px 60px #0004;
-    }
-
-    .hero-image {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: 290px;
-      max-height: 390px;
-      object-fit: cover;
-    }
-
-    .image-caption {
-      position: absolute;
-      right: 14px;
-      bottom: 14px;
-      left: 14px;
-      padding: 10px 14px;
-      border: 1px solid #ffffff20;
-      border-radius: 13px;
-      background: #07111edc;
-      backdrop-filter: blur(8px);
-      font-size: 12px;
     }
 
     /* دکمه‌ها */
@@ -218,19 +202,25 @@
       border-color: var(--cyan);
     }
 
-    /* مزیت‌ها */
+    /* ویژگی‌ها و مدارک */
     .features {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       margin: 0 0 35px;
     }
 
     .feature {
-      padding: 18px;
+      padding: 19px;
       border: 1px solid var(--border);
       border-radius: 16px;
-      background: #102136a8;
+      background: linear-gradient(145deg, #102136, #0b1726);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature:hover {
+      border-color: #e5a52e70;
+      transform: translateY(-2px);
     }
 
     .feature-icon {
@@ -246,17 +236,38 @@
     }
 
     .feature h3 {
-      margin: 0 0 4px;
+      margin: 0 0 7px;
       font-size: 15px;
     }
 
     .feature p {
       margin: 0;
       color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cert-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      background: #ffffff07;
       font-size: 12px;
     }
 
-    /* کارت‌های اصلی */
+    .cert-check {
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    /* بخش‌های اصلی */
     .card {
       margin: 20px 0;
       padding: clamp(20px, 4vw, 32px);
@@ -331,6 +342,8 @@
       margin-top: 3px;
       color: var(--muted);
       font-size: 11px;
+      direction: ltr;
+      text-align: right;
     }
 
     /* تماس */
@@ -397,28 +410,17 @@
     }
 
     @media (max-width: 700px) {
-      .nav {
-        gap: 12px;
-        font-size: 12px;
-      }
-
       .hero {
-        grid-template-columns: 1fr;
-        gap: 25px;
         padding: 38px 3px 28px;
-      }
-
-      .hero-image-wrap {
-        min-height: 230px;
-      }
-
-      .hero-image {
-        min-height: 230px;
-        max-height: 340px;
       }
 
       .features {
         grid-template-columns: 1fr;
+      }
+
+      .nav {
+        gap: 12px;
+        font-size: 12px;
       }
     }
 
@@ -474,81 +476,107 @@
       </a>
 
       <nav class="nav" aria-label="منوی اصلی">
+        <a href="#about">درباره ما</a>
         <a href="#services">خدمات</a>
         <a href="#contact">تماس با ما</a>
       </nav>
     </header>
 
-    <!-- معرفی و تصویر -->
-    <section class="hero">
-      <div class="hero-content">
-        <span class="eyebrow">خدمات تخصصی مهندسی برق</span>
+    <!-- معرفی مجموعه -->
+    <section class="hero" id="about">
+      <div class="hero-logo" aria-hidden="true">ϟ</div>
 
-        <h1>فراز تست</h1>
+      <span class="eyebrow">خدمات تخصصی مهندسی برق</span>
 
-        <div class="english-name">FARAZ TEST</div>
+      <h1>فراز تست</h1>
 
-        <p class="hero-description">
-          گروه تست و تحویل تأسیسات برقی؛ ارائه خدمات آزمون،
-          اندازه‌گیری و بررسی عملکرد تجهیزات و تأسیسات الکتریکی
-          با تمرکز بر ایمنی و اطمینان از عملکرد صحیح سیستم.
-        </p>
+      <div class="english-name">FARAZ TEST</div>
 
-        <div class="hero-actions">
-          <a class="btn" href="#contact">☎ ارتباط با ما</a>
-          <a class="btn secondary" href="#services">مشاهده خدمات ↓</a>
-        </div>
-      </div>
+      <p class="hero-subtitle">گروه تست و تحویل تأسیسات برقی</p>
 
-      <div class="hero-image-wrap">
-        <img
-          class="hero-image"
-          src="faraz-hero.jfif"
-          alt="فراز تست، خدمات تست و تحویل تأسیسات برقی"
-          fetchpriority="high"
-          onerror="this.style.display='none';"
-        >
-        <div class="image-caption">
-          <strong>Electrical Testing &amp; Commissioning</strong>
-          <br>
-          <span>گروه تست و تحویل تأسیسات برقی</span>
-        </div>
+      <p class="hero-subtitle" dir="ltr">
+        Electrical Testing &amp; Commissioning
+      </p>
+
+      <p class="hero-description">
+        ارائه خدمات تخصصی تست، اندازه‌گیری و ارزیابی تأسیسات برقی
+        با بهره‌گیری از تجهیزات مدرن، تیم مجرب و روش‌های تخصصی؛
+        همراه با گزارش‌های دقیق و مستند برای بررسی و تحویل پروژه‌های ساختمانی.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn" href="#contact">☎ ارتباط با ما</a>
+        <a class="btn secondary" href="#services">مشاهده خدمات ↓</a>
       </div>
     </section>
 
-    <!-- مزیت‌های خدمات -->
-    <section class="features" aria-label="ویژگی‌های خدمات">
-      <div class="feature">
-        <span class="feature-icon" aria-hidden="true">⌁</span>
-        <h3>اندازه‌گیری و آزمون</h3>
-        <p>بررسی پارامترهای الکتریکی و عملکرد تجهیزات</p>
-      </div>
+    <!-- مزیت‌ها و گواهی‌ها -->
+    <section class="features" aria-label="ویژگی‌ها و گواهی‌ها">
 
-      <div class="feature">
+      <article class="feature">
         <span class="feature-icon" aria-hidden="true">✓</span>
-        <h3>توجه به ایمنی</h3>
-        <p>بررسی پیوستگی حفاظتی و الزامات ایمنی برق</p>
-      </div>
+        <h3>دارای گواهی تست و تحویل تأسیسات برقی</h3>
+        <p>گواهی‌های مرتبط با تست و تحویل تأسیسات برقی از مراجع زیر:</p>
 
-      <div class="feature">
+        <div class="cert-list">
+          <div class="cert-item">
+            <span class="cert-check">✓</span>
+            <span>سازمان نظام مهندسی استان فارس</span>
+          </div>
+
+          <div class="cert-item">
+            <span class="cert-check">✓</span>
+            <span>سازمان فنی و حرفه‌ای کشور</span>
+          </div>
+
+          <div class="cert-item">
+            <span class="cert-check">✓</span>
+            <span>سازمان نظام مهندسی ساختمان، شورای مرکزی</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature">
         <span class="feature-icon" aria-hidden="true">⚡</span>
-        <h3>خدمات تخصصی برق</h3>
-        <p>آزمون‌های متنوع تأسیسات الکتریکی</p>
-      </div>
+        <h3>تجهیزات و روش‌های مدرن</h3>
+        <p>
+          استفاده از مدرن‌ترین تجهیزات و روش‌های تست و ارزیابی
+          برای بررسی دقیق عملکرد و ایمنی تأسیسات الکتریکی.
+        </p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-icon" aria-hidden="true">⌂</span>
+        <h3>تیم مجرب و باسابقه</h3>
+        <p>
+          بهره‌گیری از تیم مجرب و باسابقه در پروژه‌های ساختمانی
+          با شناخت نیازهای اجرایی و الزامات فنی پروژه.
+        </p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-icon" aria-hidden="true">▤</span>
+        <h3>گزارش‌های دقیق و مستند</h3>
+        <p>
+          ارائه گزارش‌های دقیق و مستند مطابق با الزامات ناظران
+          و نیازهای فنی مرتبط با تست و تحویل تأسیسات برقی.
+        </p>
+      </article>
+
     </section>
 
     <!-- خدمات تخصصی -->
     <section class="card" id="services">
       <h2>خدمات تخصصی ما</h2>
       <p class="section-description">
-        مجموعه‌ای از آزمون‌ها و اندازه‌گیری‌های تأسیسات برقی
+        آزمون‌ها و اندازه‌گیری‌های تخصصی تأسیسات الکتریکی
       </p>
 
       <div class="services">
         <div class="service">
           <span class="service-number">۰۱</span>
           <div>
-            <div class="service-title">تست مقاومت الکترود زمین</div>
+            <div class="service-title">تست و اندازه‌گیری مقاومت الکترود زمین</div>
             <div class="service-subtitle">Earth Electrode Resistance Test</div>
           </div>
         </div>
@@ -556,7 +584,7 @@
         <div class="service">
           <span class="service-number">۰۲</span>
           <div>
-            <div class="service-title">تست پیوستگی هادی حفاظتی و همبندی</div>
+            <div class="service-title">تست پیوستگی هادی حفاظتی و همبندی اصلی و اضافی</div>
             <div class="service-subtitle">Protective Conductor Continuity</div>
           </div>
         </div>
@@ -580,7 +608,7 @@
         <div class="service">
           <span class="service-number">۰۵</span>
           <div>
-            <div class="service-title">تست عملکرد کلید جریان باقیمانده</div>
+            <div class="service-title">تست عملکرد کلید جریان باقیمانده (RCD)</div>
             <div class="service-subtitle">RCD Test</div>
           </div>
         </div>
@@ -611,11 +639,12 @@
       </div>
     </section>
 
-    <!-- تماس با ما -->
+    <!-- اطلاعات تماس -->
     <section class="card" id="contact">
       <h2>ارتباط با ما</h2>
+
       <p class="section-description">
-        برای دریافت اطلاعات بیشتر درباره خدمات تست و تحویل تأسیسات برقی با ما تماس بگیرید.
+        برای دریافت اطلاعات بیشتر درباره خدمات تست و تحویل تأسیسات برقی با ما در ارتباط باشید.
       </p>
 
       <div class="phones">
