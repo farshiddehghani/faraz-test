@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1726">
+  <meta name="description" content="فراز تست؛ گروه تست و تحویل تأسیسات برقی، تست ارت، عایقی، پیوستگی و آزمون‌های تخصصی برق.">
+
+  <title>فراز تست | FARAZ TEST</title>
+
+  <style>
+    :root {
+      --bg: #07111e;
+      --card: #102136;
+      --gold: #e5a52e;
+      --text: #f4f7fb;
+      --muted: #b6c3d3;
+      --border: #293b50;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at top, #18314b 0%, var(--bg) 60%);
+      color: var(--text);
+      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+      line-height: 1.9;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(900px, calc(100% - 28px));
+      margin: auto;
+      padding: 25px 0;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 32px 12px;
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 15px;
+      border-radius: 23px;
+      background: var(--gold);
+      color: #091523;
+      font-size: 44px;
+      font-weight: bold;
+      box-shadow: 0 12px 35px #0005;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 6vw, 46px);
+      line-height: 1.5;
+    }
+
+    .english-name {
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      direction: ltr;
+    }
+
+    .subtitle {
+      margin: 5px 0;
+      color: var(--muted);
+    }
+
+    .card {
+      margin: 17px 0;
+      padding: clamp(18px, 4vw, 30px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: linear-gradient(145deg, #102136, #0b1726);
+      box-shadow: 0 18px 45px #0002;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      font-size: 23px;
+    }
+
+    h2::after {
+      display: block;
+      content: "";
+      width: 58px;
+      height: 3px;
+      margin-top: 8px;
+      border-radius: 5px;
+      background: var(--gold);
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .service {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 13px;
+      border: 1px solid #ffffff12;
+      border-radius: 13px;
+      background: #ffffff06;
+    }
+
+    .check {
+      color: var(--gold);
+      font-weight: bold;
+      font-size: 19px;
+    }
+
+    .phones {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .phone {
+      display: block;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: #ffffff08;
+      text-align: center;
+      direction: ltr;
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .phone:hover {
+      border-color: var(--gold);
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 49px;
+      padding: 11px 14px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      background: var(--gold);
+      color: #101a26;
+      text-align: center;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.07);
+    }
+
+    .btn.secondary {
+      border-color: #31475e;
+      background: #172b40;
+      color: var(--text);
+    }
+
+    .btn.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 20px 5px;
+      color: #8fa1b6;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 580px) {
+      .services,
+      .phones,
+      .buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- معرفی مجموعه -->
+    <header class="hero">
+      <div class="logo" aria-hidden="true">ϟ</div>
+
+      <h1>فراز تست</h1>
+
+      <div class="english-name">FARAZ TEST</div>
+
+      <p class="subtitle">
+        گروه تست و تحویل تأسیسات برقی
+      </p>
+
+      <p class="subtitle" dir="ltr">
+        Electrical Testing &amp; Commissioning
+      </p>
+    </header>
+
+    <!-- خدمات تخصصی -->
+    <section class="card" id="services">
+      <h2>خدمات تخصصی ما</h2>
+
+      <div class="services">
+        <div class="service">
+          <span class="check">✓</span>
+          <span>تست و اندازه‌گیری مقاومت الکترود زمین</span>
+        </div>
+
+        <div class="service">
+          <span class="check">✓</span>
+          <span>تست پیوستگی هادی حفاظتی و همبندی اصلی و اضافی</span>
+        </div>
+
+        <div class="service">
+          <span class="check">✓</span>
+          <span>تست مقاومت عایقی</span>
+        </div>
+
+        <div class="service">
+          <span class="check">✓</span>
+          <span>تست امپدانس حلقه اتصال کوتاه</span>
+        </div>
+
+        <div class="service">
+          <span class="check">✓</span>
+          <span>تست عملکرد کلید جریان باقیمانده (RCD)</span>
+        </div>
+
+        <div class="service">
+          <span class="check">✓</span>
+          <span>تست پلاریته (قطبیت)</span>
+        </div>
+
+        <div class="service">
+          <span class="check">✓</span>
+          <span>تست افت ولتاژ</span>
+        </div>
+
+        <div class="service">
+          <span class="check">✓</span>
+          <span>تست توالی فاز</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- اطلاعات تماس -->
+    <section class="card" id="contact">
+      <h2>ارتباط با ما</h2>
+
+      <div class="phones">
+        <a class="phone" href="tel:+989915678210">
+          09915678210
+        </a>
+
+        <a class="phone" href="tel:+989303490051">
+          09303490051
+        </a>
+      </div>
+
+      <div class="buttons">
+        <a class="btn" href="tel:+989915678210">
+          ☎ تماس با ما
+        </a>
+
+        <a class="btn secondary" href="sms:+989915678210">
+          ✉ ارسال پیامک
+        </a>
+
+        <a class="btn" href="https://wa.me/989915678210"
+           target="_blank" rel="noopener noreferrer">
+          واتساپ
+        </a>
+
+        <a class="btn secondary"
+           href="https://ble.ir/farshid_dehghani"
+           target="_blank" rel="noopener noreferrer">
+          ارتباط از طریق بله
+        </a>
+
+        <a class="btn secondary disabled"
+           href="#"
+           aria-disabled="true"
+           title="لینک تلگرام هنوز مشخص نشده">
+          تلگرام (به‌زودی)
+        </a>
+
+        <a class="btn secondary" href="contact.vcf" download>
+          ＋ ذخیره مخاطب
+        </a>
+      </div>
+
+      <p class="note">
+        برای ارتباط از طریق تلگرام، پس از مشخص شدن لینک حساب،
+        این دکمه فعال خواهد شد.
+      </p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> FARAZ TEST
+      <br>
+      Electrical Testing &amp; Commissioning
+    </footer>
+
+  </main>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
