@@ -267,6 +267,32 @@
       font-weight: bold;
     }
 
+
+    /* لینک‌های کم‌تأکید مشاهده گواهی */
+    .cert-item {
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .cert-label {
+      flex: 1 1 180px;
+    }
+
+    .cert-view {
+      margin-right: auto;
+      color: var(--gold);
+      font-size: 11px;
+      white-space: nowrap;
+      opacity: .88;
+      border-bottom: 1px dashed #e5a52e70;
+      transition: opacity .2s, color .2s;
+    }
+
+    .cert-view:hover {
+      opacity: 1;
+      color: #ffd77e;
+    }
+
     /* بخش‌های اصلی */
     .card {
       margin: 20px 0;
@@ -521,17 +547,20 @@
         <div class="cert-list">
           <div class="cert-item">
             <span class="cert-check">✓</span>
-            <span>سازمان نظام مهندسی استان فارس</span>
+            <span class="cert-label">سازمان نظام مهندسی استان فارس</span>
+            <a class="cert-view" href="certificates/nezam-fars.html">مشاهده تصویر ↗</a>
           </div>
 
           <div class="cert-item">
             <span class="cert-check">✓</span>
-            <span>سازمان فنی و حرفه‌ای کشور</span>
+            <span class="cert-label">سازمان فنی و حرفه‌ای کشور</span>
+            <a class="cert-view" href="certificates/fani-herfei.html">مشاهده تصویر ↗</a>
           </div>
 
           <div class="cert-item">
             <span class="cert-check">✓</span>
-            <span>سازمان نظام مهندسی ساختمان، شورای مرکزی</span>
+            <span class="cert-label">سازمان نظام مهندسی ساختمان، شورای مرکزی</span>
+            <a class="cert-view" href="certificates/shoraye-markazi.html">مشاهده تصویر ↗</a>
           </div>
         </div>
       </article>
