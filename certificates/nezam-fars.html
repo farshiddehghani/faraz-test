@@ -1,1 +1,63 @@
-Certificate page
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111e">
+  <meta name="description" content="گواهی یک و دو | فراز تست">
+  <title>گواهی یک و دو | FARAZ TEST</title>
+  <style>
+    :root{--bg:#07111e;--card:#102136;--gold:#e5a52e;--text:#f4f7fb;--muted:#b6c3d3;--border:#293b50}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top right,#183652 0%,transparent 48%),linear-gradient(145deg,#07111e,#0a1726 60%,#07111e);color:var(--text);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.9}
+    .container{width:min(1000px,calc(100% - 28px));margin:auto;padding:24px 0 40px}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--border);border-radius:16px;background:#0b1929ef}
+    .brand{font-weight:bold}.brand small{display:block;color:var(--muted);font-size:10px;direction:ltr;letter-spacing:1px}
+    .back{color:var(--gold);font-size:13px;white-space:nowrap}
+    .intro{text-align:center;padding:34px 10px 24px}
+    .eyebrow{display:inline-block;padding:4px 12px;border:1px solid #e5a52e55;border-radius:30px;color:var(--gold);background:#e5a52e0d;font-size:12px}
+    h1{font-size:clamp(23px,4vw,34px);margin:12px 0 5px}
+    .desc{margin:0;color:var(--muted);font-size:13px}
+    .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .cert{min-width:0;padding:15px;border:1px solid var(--border);border-radius:18px;background:linear-gradient(145deg,#102136,#0b1726);box-shadow:0 18px 45px #0002}
+    .cert h2{font-size:15px;margin:0 0 12px}
+    .image-frame{display:grid;place-items:center;min-height:230px;padding:12px;border:1px dashed #52677d;border-radius:12px;background:#07111e}
+    .image-frame img{display:block;max-width:100%;max-height:70vh;object-fit:contain}
+    .missing{color:var(--muted);font-size:12px;text-align:center}
+    .hint{margin-top:22px;padding:12px 15px;border:1px solid #293b50;border-radius:12px;color:var(--muted);font-size:12px;background:#ffffff04}
+    footer{text-align:center;color:#8fa1b6;font-size:11px;padding:25px 8px 0}
+    @media(max-width:650px){.gallery{grid-template-columns:1fr}.top{align-items:flex-start}.image-frame{min-height:190px}}
+</style>
+</head>
+<body>
+  <main class="container">
+    <header class="top">
+      <a class="brand" href="../index.html">فراز تست<small>FARAZ TEST</small></a>
+      <a class="back" href="../index.html">← بازگشت به صفحه اصلی</a>
+    </header>
+    <section class="intro">
+      <span class="eyebrow">مدارک و گواهی‌ها</span>
+      <h1>گواهی یک و دو</h1>
+      <p class="desc">گواهی تست و تحویل از سازمان نظام مهندسی استان فارس</p>
+    </section>
+    <section class="gallery" aria-label="تصاویر گواهی‌ها">
+      <article class="cert">
+        <h2>گواهی شماره یک</h2>
+        <div class="image-frame">
+          <img src="../images/certificate-1.jpg" alt="گواهی شماره یک" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <p class="missing" style="display:none">تصویر هنوز بارگذاری نشده است.<br>فایل <b>certificate-1.jpg</b> را در پوشه images قرار دهید.</p>
+        </div>
+      </article>
+      <article class="cert">
+        <h2>گواهی شماره دو</h2>
+        <div class="image-frame">
+          <img src="../images/certificate-2.jpg" alt="گواهی شماره دو" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <p class="missing" style="display:none">تصویر هنوز بارگذاری نشده است.<br>فایل <b>certificate-2.jpg</b> را در پوشه images قرار دهید.</p>
+        </div>
+      </article>
+    </section>
+    <p class="hint">برای مشاهده تصویر با اندازه بزرگ‌تر، روی تصویر کلیک راست کرده و آن را در زبانه جدید باز کنید؛ در صورت نیاز می‌توان نمایش تمام‌صفحه را نیز اضافه کرد.</p>
+    <footer>© FARAZ TEST — Electrical Testing &amp; Commissioning</footer>
+  </main>
+</body>
+</html>
