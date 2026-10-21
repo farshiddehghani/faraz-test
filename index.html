@@ -1,42 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07111e">
-  <meta name="description" content="فراز تست؛ گروه تست و تحویل تأسیسات برقی، آزمون‌های تخصصی برق و ارائه گزارش‌های فنی مستند.">
+  <meta name="description" content="فراز تست؛ گروه تست و تحویل تأسیسات برقی، آزمون‌های تخصصی برق ساختمان و ارائه گزارش‌های فنی مستند و رسمی.">
 
   <title>فراز تست | FARAZ TEST</title>
 
+  <!-- فونت استاندارد وزیرمتن -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #07111e;
-      --card: #102136;
-      --gold: #e5a52e;
-      --text: #f4f7fb;
-      --muted: #b6c3d3;
-      --border: #293b50;
-      --cyan: #42c7e8;
+      --bg: #060e18;
+      --card-bg: rgba(14, 27, 44, 0.75);
+      --card-border: rgba(66, 199, 232, 0.14);
+      --gold: #f2ad33;
+      --gold-glow: rgba(242, 173, 51, 0.25);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.2);
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 20px;
+      scroll-padding-top: 85px;
     }
 
     body {
-      margin: 0;
-      background:
-        radial-gradient(ellipse at top right, #183652 0%, transparent 48%),
-        linear-gradient(145deg, #07111e, #0a1726 60%, #07111e);
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 15% 60%, rgba(242, 173, 51, 0.07) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
       color: var(--text);
-      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
-      line-height: 1.9;
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      line-height: 1.85;
+      overflow-x: hidden;
     }
 
     a {
@@ -45,9 +57,17 @@
     }
 
     .container {
-      width: min(1050px, calc(100% - 32px));
-      margin: auto;
-      padding: 20px 0;
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 20px 0 50px;
+    }
+
+    /* هدر چسبان و شیشه‌ای */
+    .topbar-wrapper {
+      position: sticky;
+      top: 14px;
+      z-index: 100;
+      margin-bottom: 30px;
     }
 
     .topbar {
@@ -55,117 +75,146 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      padding: 12px 18px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: #0b1929ef;
+      padding: 12px 22px;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      background: rgba(11, 23, 38, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: bold;
+      gap: 12px;
     }
 
     .brand-icon {
       display: grid;
       place-items: center;
-      width: 43px;
-      height: 43px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
-      background: var(--gold);
-      color: #07111e;
-      font-size: 26px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #050b14;
+      box-shadow: 0 4px 15px var(--gold-glow);
+    }
+
+    .brand-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
     }
 
     .brand-name {
-      font-size: 17px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
     }
 
     .brand-en {
       display: block;
       color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 1px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
       direction: ltr;
     }
 
     .nav {
       display: flex;
-      gap: 22px;
+      gap: 20px;
       align-items: center;
       color: var(--muted);
       font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav a {
+      transition: color 0.25s ease;
+      position: relative;
     }
 
     .nav a:hover {
       color: var(--gold);
     }
 
-    /* معرفی مجموعه بدون تصویر */
+    /* بخش معرفی (Hero Section) */
     .hero {
-      padding: 54px 12px 35px;
+      padding: 50px 15px 40px;
       text-align: center;
+      position: relative;
     }
 
-    .hero-logo {
-      display: grid;
-      place-items: center;
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 16px;
-      border: 1px solid #ffffff20;
-      border-radius: 23px;
-      background: linear-gradient(145deg, #f2c45f, #d99218);
-      color: #07111e;
-      font-size: 44px;
-      font-weight: bold;
-      box-shadow: 0 12px 35px #0005;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 5px 13px;
-      margin-bottom: 12px;
-      border: 1px solid #e5a52e55;
-      border-radius: 30px;
+    .hero-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(242, 173, 51, 0.35);
+      border-radius: 50px;
       color: var(--gold);
-      background: #e5a52e0d;
-      font-size: 12px;
+      background: rgba(242, 173, 51, 0.08);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(242, 173, 51, 0.1);
+    }
+
+    .hero-badge-wrap svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(35px, 5vw, 54px);
-      line-height: 1.5;
+      font-size: clamp(34px, 6vw, 56px);
+      font-weight: 900;
+      line-height: 1.25;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .english-name {
+      margin-top: 4px;
       color: var(--gold);
-      font-size: clamp(22px, 3vw, 29px);
-      font-weight: bold;
+      font-size: clamp(20px, 3.5vw, 28px);
+      font-weight: 800;
       letter-spacing: 2px;
       direction: ltr;
+      text-shadow: 0 0 30px var(--gold-glow);
     }
 
     .hero-subtitle {
-      margin: 5px 0;
-      color: var(--muted);
+      margin-top: 12px;
+      color: #e2e8f0;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .hero-subtitle-en {
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
 
     .hero-description {
-      max-width: 720px;
-      margin: 14px auto 25px;
+      max-width: 740px;
+      margin: 18px auto 30px;
       color: var(--muted);
       font-size: 15px;
+      line-height: 2;
     }
 
     .hero-actions {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
     }
 
     /* دکمه‌ها */
@@ -173,316 +222,361 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 47px;
-      padding: 10px 18px;
+      gap: 10px;
+      min-height: 48px;
+      padding: 10px 24px;
       border: 1px solid transparent;
-      border-radius: 12px;
-      background: var(--gold);
-      color: #101a26;
-      text-align: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #040810;
       font-size: 14px;
-      font-weight: bold;
-      transition: transform 0.2s, filter 0.2s, border-color 0.2s;
+      font-weight: 700;
+      transition: all 0.25s ease;
       cursor: pointer;
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.25);
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.08);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+      filter: brightness(1.1);
     }
 
     .btn.secondary {
-      border-color: #31475e;
-      background: #172b40;
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
+      box-shadow: none;
+      backdrop-filter: blur(10px);
     }
 
     .btn.secondary:hover {
       border-color: var(--cyan);
+      background: rgba(56, 189, 248, 0.1);
+      color: #ffffff;
+      box-shadow: 0 6px 20px var(--cyan-glow);
     }
 
-    /* ویژگی‌ها و مدارک */
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ویژگی‌ها */
     .features {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin: 0 0 35px;
+      gap: 18px;
+      margin: 30px 0 40px;
     }
 
     .feature {
-      padding: 19px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: linear-gradient(145deg, #102136, #0b1726);
-      transition: border-color 0.2s, transform 0.2s;
+      padding: 24px;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
     }
 
     .feature:hover {
-      border-color: #e5a52e70;
-      transform: translateY(-2px);
+      border-color: rgba(242, 173, 51, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
     }
 
     .feature-icon {
       display: inline-grid;
       place-items: center;
-      width: 42px;
-      height: 42px;
-      margin-bottom: 7px;
+      width: 46px;
+      height: 46px;
+      margin-bottom: 14px;
       border-radius: 12px;
-      background: #42c7e815;
+      background: rgba(56, 189, 248, 0.1);
       color: var(--cyan);
-      font-size: 22px;
+    }
+
+    .feature-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
     }
 
     .feature h3 {
-      margin: 0 0 7px;
-      font-size: 15px;
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 700;
     }
 
     .feature p {
       margin: 0;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 13.5px;
+      line-height: 1.8;
     }
 
+    /* لیست گواهی‌ها */
     .cert-list {
       display: grid;
-      gap: 8px;
-      margin-top: 12px;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     .cert-item {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 12.5px;
+    }
+
+    .cert-title-group {
+      display: flex;
+      align-items: center;
       gap: 8px;
-      padding: 9px 10px;
-      border-radius: 10px;
-      background: #ffffff07;
-      font-size: 12px;
     }
 
     .cert-check {
       color: var(--gold);
-      font-weight: bold;
-    }
-
-
-    /* لینک‌های کم‌تأکید مشاهده گواهی */
-    .cert-item {
-      flex-wrap: wrap;
+      display: flex;
       align-items: center;
     }
 
-    .cert-label {
-      flex: 1 1 180px;
-    }
-
     .cert-view {
-      margin-right: auto;
       color: var(--gold);
-      font-size: 11px;
+      font-size: 11.5px;
+      font-weight: 600;
       white-space: nowrap;
-      opacity: .88;
-      border-bottom: 1px dashed #e5a52e70;
-      transition: opacity .2s, color .2s;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(242, 173, 51, 0.1);
+      transition: all 0.2s ease;
     }
 
     .cert-view:hover {
-      opacity: 1;
-      color: #ffd77e;
+      background: var(--gold);
+      color: #000;
     }
 
-    /* بخش‌های اصلی */
+    /* کارت‌های اصلی */
     .card {
-      margin: 20px 0;
-      padding: clamp(20px, 4vw, 32px);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: linear-gradient(145deg, #102136, #0b1726);
-      box-shadow: 0 18px 45px #0002;
+      margin: 30px 0;
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
     }
 
     h2 {
-      margin: 0 0 23px;
-      font-size: clamp(21px, 3vw, 26px);
+      margin: 0 0 10px;
+      font-size: clamp(22px, 3.5vw, 28px);
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
     }
 
     h2::after {
-      display: block;
       content: "";
-      width: 58px;
-      height: 3px;
+      display: block;
+      width: 48px;
+      height: 4px;
       margin-top: 8px;
-      border-radius: 5px;
-      background: var(--gold);
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--gold), transparent);
     }
 
     .section-description {
-      margin: -12px 0 22px;
+      margin-bottom: 26px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
     }
 
-    /* خدمات */
+    /* شبکه خدمات */
     .services {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
+      gap: 16px;
     }
 
     .service {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 16px;
-      border: 1px solid #ffffff12;
-      border-radius: 14px;
-      background: #ffffff05;
-      transition: border-color 0.2s, background 0.2s;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
     }
 
     .service:hover {
-      border-color: #e5a52e70;
-      background: #e5a52e08;
+      border-color: rgba(242, 173, 51, 0.5);
+      background: rgba(242, 173, 51, 0.03);
+      transform: translateX(-4px);
     }
 
     .service-number {
       display: grid;
       place-items: center;
-      flex: 0 0 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: #e5a52e16;
+      flex: 0 0 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(242, 173, 51, 0.12);
+      border: 1px solid rgba(242, 173, 51, 0.25);
       color: var(--gold);
-      font-size: 13px;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 800;
     }
 
     .service-title {
-      font-size: 14px;
-      font-weight: bold;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.5;
     }
 
     .service-subtitle {
-      margin-top: 3px;
+      margin-top: 4px;
       color: var(--muted);
-      font-size: 11px;
+      font-size: 11.5px;
+      letter-spacing: 0.3px;
       direction: ltr;
       text-align: right;
+      font-family: Arial, sans-serif;
     }
 
-    /* تماس */
+    /* بخش تماس */
     .phones {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
-      margin-bottom: 20px;
+      gap: 16px;
+      margin-bottom: 24px;
     }
 
     .phone {
-      display: block;
-      padding: 15px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: #ffffff06;
-      text-align: center;
-      direction: ltr;
-      font-size: 20px;
-      font-weight: bold;
-      transition: border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.25s ease;
     }
 
     .phone:hover {
       border-color: var(--gold);
+      background: rgba(242, 173, 51, 0.04);
+      transform: translateY(-2px);
+    }
+
+    .phone-number {
+      direction: ltr;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
     }
 
     .phone-label {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: normal;
-      direction: rtl;
+      margin-bottom: 6px;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 600;
     }
 
     .contact-buttons {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
 
     .contact-buttons .btn {
       width: 100%;
+      min-height: 48px;
     }
 
     .note {
-      margin: 17px 0 0;
-      color: var(--muted);
-      font-size: 12px;
+      margin-top: 20px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px dashed rgba(56, 189, 248, 0.2);
+      color: #94a3b8;
+      font-size: 13px;
+      text-align: center;
     }
 
     footer {
-      margin-top: 30px;
-      padding: 25px 10px;
-      border-top: 1px solid var(--border);
-      color: #8fa1b6;
+      margin-top: 40px;
+      padding: 30px 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
       text-align: center;
-      font-size: 12px;
+      font-size: 13px;
+      line-height: 1.9;
     }
 
     footer strong {
       color: var(--gold);
     }
 
-    @media (max-width: 700px) {
+    /* واکنش‌گرایی موبایل */
+    @media (max-width: 768px) {
       .hero {
-        padding: 38px 3px 28px;
+        padding: 35px 5px 25px;
       }
 
-      .features {
+      .features,
+      .services,
+      .phones {
         grid-template-columns: 1fr;
       }
 
-      .nav {
-        gap: 12px;
-        font-size: 12px;
+      .contact-buttons {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-buttons .btn:last-child {
+        grid-column: span 2;
       }
     }
 
     @media (max-width: 480px) {
       .container {
-        width: calc(100% - 22px);
+        width: calc(100% - 24px);
       }
 
       .topbar {
-        padding: 10px 12px;
+        padding: 10px 16px;
       }
 
       .brand-name {
-        font-size: 15px;
+        font-size: 16px;
       }
 
       .nav {
-        gap: 10px;
+        gap: 12px;
+        font-size: 13px;
       }
 
-      .services,
-      .phones,
       .contact-buttons {
         grid-template-columns: 1fr;
       }
 
-      .service {
-        padding: 13px;
+      .contact-buttons .btn:last-child {
+        grid-column: span 1;
       }
 
       .hero-actions .btn {
-        flex: 1 1 100%;
-      }
-
-      .phone {
-        font-size: 19px;
+        width: 100%;
       }
     }
   </style>
@@ -491,48 +585,50 @@
 <body>
   <main class="container">
 
-    <!-- سربرگ -->
-    <header class="topbar">
-      <a class="brand" href="#" aria-label="فراز تست">
-        <span class="brand-icon" aria-hidden="true">ϟ</span>
-        <span>
-          <span class="brand-name">فراز تست</span>
-          <span class="brand-en">FARAZ TEST</span>
-        </span>
-      </a>
+    <!-- سربرگ چسبان -->
+    <div class="topbar-wrapper">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="فراز تست">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <div class="brand-name">فراز تست</div>
+            <div class="brand-en">FARAZ TEST</div>
+          </div>
+        </a>
 
-      <nav class="nav" aria-label="منوی اصلی">
-        <a href="#about">درباره ما</a>
-        <a href="#services">خدمات</a>
-        <a href="#contact">تماس با ما</a>
-      </nav>
-    </header>
+        <nav class="nav" aria-label="منوی اصلی">
+          <a href="#about">درباره ما</a>
+          <a href="#services">خدمات</a>
+          <a href="#contact">تماس با ما</a>
+        </nav>
+      </header>
+    </div>
 
-    <!-- معرفی مجموعه -->
+    <!-- معرفی مجموعه (Hero) -->
     <section class="hero" id="about">
-      <div class="hero-logo" aria-hidden="true">ϟ</div>
-
-      <span class="eyebrow">خدمات تخصصی مهندسی برق</span>
+      <div class="hero-badge-wrap">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span>خدمات تخصصی مهندسی برق ساختمان</span>
+      </div>
 
       <h1>فراز تست</h1>
-
       <div class="english-name">FARAZ TEST</div>
 
-      <p class="hero-subtitle">گروه تست و تحویل تأسیسات برقی</p>
-
-      <p class="hero-subtitle" dir="ltr">
-        Electrical Testing &amp; Commissioning
-      </p>
+      <p class="hero-subtitle">گروه تخصصی تست و تحویل تأسیسات الکتریکی</p>
+      <p class="hero-subtitle-en" dir="ltr">Electrical Testing &amp; Commissioning</p>
 
       <p class="hero-description">
-        ارائه خدمات تخصصی تست، اندازه‌گیری و ارزیابی تأسیسات برقی
-        با بهره‌گیری از تجهیزات مدرن، تیم مجرب و روش‌های تخصصی؛
-        همراه با گزارش‌های دقیق و مستند برای بررسی و تحویل پروژه‌های ساختمانی.
+        ارائه خدمات تخصصی آزمون، ارزیابی و اندازه‌گیری پارامترهای ایمنی برق با پیشرفته‌ترین تجهیزات کالیبره، همراه با گزارش‌های فنی، رسمی و مستند مطابق با مبحث ۱۳ مقررات ملی ساختمان جهت تأیید مهندسان ناظر.
       </p>
 
       <div class="hero-actions">
-        <a class="btn" href="#contact">☎ ارتباط با ما</a>
-        <a class="btn secondary" href="#services">مشاهده خدمات ↓</a>
+        <a class="btn" href="#contact">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+          درخواست تست و مشاوره
+        </a>
+        <a class="btn secondary" href="#services">مشاهده لیست آزمون‌ها ↓</a>
       </div>
     </section>
 
@@ -540,55 +636,66 @@
     <section class="features" aria-label="ویژگی‌ها و گواهی‌ها">
 
       <article class="feature">
-        <span class="feature-icon" aria-hidden="true">✓</span>
-        <h3>دارای گواهی تست و تحویل تأسیسات برقی</h3>
-        <p>گواهی‌های مرتبط با تست و تحویل تأسیسات برقی از مراجع زیر:</p>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        </div>
+        <h3>دارای صلاحیت رسمی تست و تحویل تأسیسات</h3>
+        <p>مستندات و گواهی‌های صلاحیت حرفه‌ای از مراجع تخصصی کشور:</p>
 
         <div class="cert-list">
           <div class="cert-item">
-            <span class="cert-check">✓</span>
-            <span class="cert-label">سازمان نظام مهندسی استان فارس</span>
-            <a class="cert-view" href="certificates/nezam-fars.html">مشاهده تصویر ↗</a>
+            <div class="cert-title-group">
+              <span class="cert-check">✔</span>
+              <span>سازمان نظام مهندسی ساختمان استان فارس</span>
+            </div>
+            <a class="cert-view" href="certificates/nezam-fars.html">مشاهده مدرک ↗</a>
           </div>
 
           <div class="cert-item">
-            <span class="cert-check">✓</span>
-            <span class="cert-label">سازمان فنی و حرفه‌ای کشور</span>
-            <a class="cert-view" href="certificates/fani-herfei.html">مشاهده تصویر ↗</a>
+            <div class="cert-title-group">
+              <span class="cert-check">✔</span>
+              <span>سازمان آموزش فنی و حرفه‌ای کشور</span>
+            </div>
+            <a class="cert-view" href="certificates/fani-herfei.html">مشاهده مدرک ↗</a>
           </div>
 
           <div class="cert-item">
-            <span class="cert-check">✓</span>
-            <span class="cert-label">سازمان نظام مهندسی ساختمان، شورای مرکزی</span>
-            <a class="cert-view" href="certificates/shoraye-markazi.html">مشاهده تصویر ↗</a>
+            <div class="cert-title-group">
+              <span class="cert-check">✔</span>
+              <span>شورای مرکزی نظام مهندسی ساختمان</span>
+            </div>
+            <a class="cert-view" href="certificates/shoraye-markazi.html">مشاهده مدرک ↗</a>
           </div>
         </div>
       </article>
 
       <article class="feature">
-        <span class="feature-icon" aria-hidden="true">⚡</span>
-        <h3>تجهیزات و روش‌های مدرن</h3>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        </div>
+        <h3>دستگاه‌های اندازه‌گیری کالیبره و مدرن</h3>
         <p>
-          استفاده از مدرن‌ترین تجهیزات و روش‌های تست و ارزیابی
-          برای بررسی دقیق عملکرد و ایمنی تأسیسات الکتریکی.
+          بهره‌گیری از نسل جدید ابزارهای چندمنظوره (Multifunction Testers) تست تأسیسات با دقت اندازه‌گیری بالا و کالیبراسیون معتبر.
         </p>
       </article>
 
       <article class="feature">
-        <span class="feature-icon" aria-hidden="true">⌂</span>
-        <h3>تیم مجرب و باسابقه</h3>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h3>تیم مجرب و متخصص میدانی</h3>
         <p>
-          بهره‌گیری از تیم مجرب و باسابقه در پروژه‌های ساختمانی
-          با شناخت نیازهای اجرایی و الزامات فنی پروژه.
+          تجربه گسترده در پروژه‌های مسکونی، تجاری و صنعتی به همراه تسلط کامل بر مبحث ۱۳ مقررات ملی و استانداردهای IEC.
         </p>
       </article>
 
       <article class="feature">
-        <span class="feature-icon" aria-hidden="true">▤</span>
-        <h3>گزارش‌های دقیق و مستند</h3>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        </div>
+        <h3>گزارش‌های مستند و تحویل قطعی</h3>
         <p>
-          ارائه گزارش‌های دقیق و مستند مطابق با الزامات ناظران
-          و نیازهای فنی مرتبط با تست و تحویل تأسیسات برقی.
+          تنظیم فرم‌ها، جدول‌های اندازه‌گیری و چک‌لیست‌های تحویل تأسیسات بدون نقص، متناسب با تأیید ناظران برق.
         </p>
       </article>
 
@@ -596,14 +703,14 @@
 
     <!-- خدمات تخصصی -->
     <section class="card" id="services">
-      <h2>خدمات تخصصی ما</h2>
+      <h2>خدمات و آزمون‌های تخصصی</h2>
       <p class="section-description">
-        آزمون‌ها و اندازه‌گیری‌های تخصصی تأسیسات الکتریکی
+        ارزیابی کامل پارامترهای ایمنی، عایقی و حفاظتی تأسیسات طبق استاندارد:
       </p>
 
       <div class="services">
         <div class="service">
-          <span class="service-number">۰۱</span>
+          <div class="service-number">۰۱</div>
           <div>
             <div class="service-title">تست و اندازه‌گیری مقاومت الکترود زمین</div>
             <div class="service-subtitle">Earth Electrode Resistance Test</div>
@@ -611,7 +718,7 @@
         </div>
 
         <div class="service">
-          <span class="service-number">۰۲</span>
+          <div class="service-number">۰۲</div>
           <div>
             <div class="service-title">تست پیوستگی هادی حفاظتی و همبندی اصلی و اضافی</div>
             <div class="service-subtitle">Protective Conductor Continuity</div>
@@ -619,15 +726,15 @@
         </div>
 
         <div class="service">
-          <span class="service-number">۰۳</span>
+          <div class="service-number">۰۳</div>
           <div>
-            <div class="service-title">تست مقاومت عایقی</div>
+            <div class="service-title">تست مقاومت عایقی خطوط و تجهیزات</div>
             <div class="service-subtitle">Insulation Resistance Test</div>
           </div>
         </div>
 
         <div class="service">
-          <span class="service-number">۰۴</span>
+          <div class="service-number">۰۴</div>
           <div>
             <div class="service-title">تست امپدانس حلقه اتصال کوتاه</div>
             <div class="service-subtitle">Earth Fault Loop Impedance Test</div>
@@ -635,33 +742,33 @@
         </div>
 
         <div class="service">
-          <span class="service-number">۰۵</span>
+          <div class="service-number">۰۵</div>
           <div>
-            <div class="service-title">تست عملکرد کلید جریان باقیمانده (RCD)</div>
-            <div class="service-subtitle">RCD Test</div>
+            <div class="service-title">تست جریان قطع و زمان عملکرد کلید نشتی جریان (RCD)</div>
+            <div class="service-subtitle">Residual Current Device (RCD) Test</div>
           </div>
         </div>
 
         <div class="service">
-          <span class="service-number">۰۶</span>
+          <div class="service-number">۰۶</div>
           <div>
-            <div class="service-title">تست پلاریته (قطبیت)</div>
+            <div class="service-title">تست قطبیت پریزها و کلیدها</div>
             <div class="service-subtitle">Polarity Test</div>
           </div>
         </div>
 
         <div class="service">
-          <span class="service-number">۰۷</span>
+          <div class="service-number">۰۷</div>
           <div>
-            <div class="service-title">تست افت ولتاژ</div>
+            <div class="service-title">اندازه‌گیری و تست افت ولتاژ</div>
             <div class="service-subtitle">Voltage Drop Test</div>
           </div>
         </div>
 
         <div class="service">
-          <span class="service-number">۰۸</span>
+          <div class="service-number">۰۸</div>
           <div>
-            <div class="service-title">تست توالی فاز</div>
+            <div class="service-title">تست توالی و تقارن فازها</div>
             <div class="service-subtitle">Phase Sequence Test</div>
           </div>
         </div>
@@ -670,72 +777,62 @@
 
     <!-- اطلاعات تماس -->
     <section class="card" id="contact">
-      <h2>ارتباط با ما</h2>
-
+      <h2>ارتباط و هماهنگی پروژه</h2>
       <p class="section-description">
-        برای دریافت اطلاعات بیشتر درباره خدمات تست و تحویل تأسیسات برقی با ما در ارتباط باشید.
+        جهت انجام آزمون‌ها، مشاوره قبل از تست یا رزرو پروژه با شماره‌های زیر در تماس باشید:
       </p>
 
       <div class="phones">
         <a class="phone" href="tel:+989915678210">
-          <span class="phone-label">شماره تماس اول</span>
-          09915678210
+          <span class="phone-label">شماره همراه و هماهنگی ۱</span>
+          <span class="phone-number">0991 567 8210</span>
         </a>
 
         <a class="phone" href="tel:+989303490051">
-          <span class="phone-label">شماره تماس دوم</span>
-          09303490051
+          <span class="phone-label">شماره همراه و هماهنگی ۲</span>
+          <span class="phone-number">0930 349 0051</span>
         </a>
       </div>
 
       <div class="contact-buttons">
         <a class="btn" href="tel:+989915678210">
-          ☎ تماس با ما
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+          تماس مستقیم
         </a>
 
         <a class="btn secondary" href="sms:+989915678210">
-          ✉ ارسال پیامک
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+          ارسال پیامک
         </a>
 
-        <a
-          class="btn"
-          href="https://wa.me/989915678210"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="btn secondary" href="https://wa.me/989915678210" target="_blank" rel="noopener noreferrer">
           واتساپ
         </a>
 
-        <a
-          class="btn secondary"
-          href="https://ble.ir/farshid_dehghani"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ارتباط از طریق بله
+        <a class="btn secondary" href="https://ble.ir/farshid_dehghani" target="_blank" rel="noopener noreferrer">
+          پیام‌رسان بله
         </a>
 
         <a class="btn secondary" href="contact.vcf" download>
-          ＋ ذخیره مخاطب
+          ذخیره شماره در مخاطبین
         </a>
       </div>
 
       <p class="note">
-        با انتخاب گزینه «ذخیره مخاطب»، اطلاعات تماس فراز تست را به دفترچه تلفن خود اضافه کنید.
+        💡 با کلیک روی دکمه «ذخیره شماره در مخاطبین»، کارت ویزیتی تلفن همراه فراز تست فوراً به مخاطبین شما افزوده می‌شود.
       </p>
     </section>
 
     <footer>
-      © <span id="year"></span> <strong>FARAZ TEST</strong>
+      © <span id="year"></span> <strong>FARAZ TEST</strong> — تمامی حقوق محفوظ است.
       <br>
-      Electrical Testing &amp; Commissioning
+      تست، بازرسی و تحویل تأسیسات برقی ساختمان
     </footer>
 
   </main>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
