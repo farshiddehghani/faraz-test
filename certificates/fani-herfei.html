@@ -1,37 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07111e">
+  <meta name="theme-color" content="#060e18">
   <meta name="description" content="گواهی تست و تحویل تاسیسات برقی فرشید دهقانی و آزیتا نژادی کلاریجانی | فراز تست">
 
   <title>گواهی تست و تحویل تاسیسات برقی | FARAZ TEST</title>
 
+  <!-- فونت استاندارد وزیرمتن -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #07111e;
-      --card: #102136;
-      --gold: #e5a52e;
-      --text: #f4f7fb;
-      --muted: #b6c3d3;
-      --border: #293b50;
+      --bg: #060e18;
+      --card-bg: rgba(14, 27, 44, 0.75);
+      --card-border: rgba(66, 199, 232, 0.14);
+      --gold: #f2ad33;
+      --gold-glow: rgba(242, 173, 51, 0.25);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --cyan: #38bdf8;
+      --cyan-glow: rgba(56, 189, 248, 0.2);
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
-      background:
-        radial-gradient(ellipse at top right, #183652 0%, transparent 48%),
-        linear-gradient(145deg, #07111e, #0a1726 60%, #07111e);
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 15% 60%, rgba(242, 173, 51, 0.07) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
       color: var(--text);
-      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
-      line-height: 1.9;
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      line-height: 1.85;
+      overflow-x: hidden;
     }
 
     body.viewer-open {
@@ -40,6 +53,7 @@
 
     a {
       text-decoration: none;
+      color: inherit;
     }
 
     button {
@@ -47,156 +61,264 @@
     }
 
     .container {
-      width: min(1000px, calc(100% - 28px));
-      margin: auto;
-      padding: 24px 0 40px;
+      width: min(1040px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 20px 0 50px;
     }
 
+    /* سربرگ */
     .top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: #0b1929ef;
+      gap: 16px;
+      padding: 12px 22px;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      background: rgba(11, 23, 38, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
     .brand {
-      color: var(--text);
-      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .brand small {
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #050b14;
+      box-shadow: 0 4px 15px var(--gold-glow);
+    }
+
+    .brand-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .brand-title small {
       display: block;
       color: var(--muted);
       font-size: 10px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
       direction: ltr;
-      letter-spacing: 1px;
     }
 
-    .back {
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--gold);
       font-size: 13px;
+      font-weight: 600;
+      transition: all 0.25s ease;
       white-space: nowrap;
     }
 
+    .back-btn:hover {
+      background: rgba(242, 173, 51, 0.15);
+      border-color: var(--gold);
+      transform: translateX(3px);
+    }
+
+    .back-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* معرفی */
     .intro {
       text-align: center;
-      padding: 34px 10px 24px;
+      padding: 40px 10px 30px;
     }
 
     .eyebrow {
-      display: inline-block;
-      padding: 4px 12px;
-      border: 1px solid #e5a52e55;
-      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 16px;
+      border: 1px solid rgba(242, 173, 51, 0.35);
+      border-radius: 50px;
       color: var(--gold);
-      background: #e5a52e0d;
-      font-size: 12px;
+      background: rgba(242, 173, 51, 0.08);
+      font-size: 12.5px;
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(242, 173, 51, 0.1);
     }
 
     h1 {
-      font-size: clamp(23px, 4vw, 34px);
-      margin: 12px 0 5px;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900;
+      margin: 14px 0 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .desc {
       margin: 0;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14.5px;
     }
 
+    /* شبکه گواهی‌ها */
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 22px;
+      margin-top: 15px;
     }
 
     .cert {
       min-width: 0;
-      padding: 15px;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      background: linear-gradient(145deg, #102136, #0b1726);
-      box-shadow: 0 18px 45px #0002;
-      transition: border-color .25s, transform .25s;
+      padding: 22px;
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .cert:hover {
-      border-color: #8e702f;
-      transform: translateY(-2px);
+      border-color: rgba(242, 173, 51, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
     }
 
     .cert h2 {
-      min-height: 58px;
-      font-size: 14px;
-      line-height: 2;
-      margin: 0 0 12px;
-      color: var(--text);
+      font-size: 15.5px;
+      font-weight: 700;
+      line-height: 1.8;
+      margin-bottom: 14px;
+      color: #ffffff;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cert-icon {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+    }
+
+    .cert-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .image-frame {
+      position: relative;
       display: grid;
       place-items: center;
-      min-height: 230px;
-      padding: 12px;
-      border: 1px solid #293b50;
-      border-radius: 12px;
-      background: #07111e;
+      min-height: 260px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      background: #040911;
       overflow: hidden;
+      cursor: zoom-in;
     }
 
     .certificate-image {
       display: block;
       max-width: 100%;
-      max-height: 420px;
+      max-height: 400px;
       width: auto;
       height: auto;
       object-fit: contain;
-      cursor: zoom-in;
-      border-radius: 5px;
-      transition: opacity .2s;
+      border-radius: 8px;
+      transition: transform 0.35s ease, opacity 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     }
 
-    .certificate-image:hover {
-      opacity: .88;
+    .image-frame:hover .certificate-image {
+      transform: scale(1.02);
+      opacity: 0.92;
     }
 
-    .image-action {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 11px;
-      text-align: center;
+    .image-badge {
+      position: absolute;
+      bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(11, 23, 38, 0.88);
+      border: 1px solid rgba(242, 173, 51, 0.3);
+      border-radius: 30px;
+      color: var(--gold);
+      font-size: 11.5px;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+    }
+
+    .image-frame:hover .image-badge {
+      background: var(--gold);
+      color: #040810;
     }
 
     .missing {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 12.5px;
       text-align: center;
+      line-height: 1.8;
+      padding: 20px;
     }
 
     .hint {
-      margin-top: 22px;
-      padding: 12px 15px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      margin-top: 30px;
+      padding: 14px 20px;
+      border: 1px dashed rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
       color: var(--muted);
-      font-size: 12px;
-      background: #ffffff04;
+      font-size: 13px;
+      background: rgba(56, 189, 248, 0.03);
       text-align: center;
     }
 
     footer {
       text-align: center;
-      color: #8fa1b6;
-      font-size: 11px;
-      padding: 25px 8px 0;
+      color: #718096;
+      font-size: 12px;
+      padding: 30px 10px 0;
+      line-height: 1.8;
     }
 
-    /* پنجره نمایش بزرگ تصویر */
+    footer strong {
+      color: var(--gold);
+    }
 
+    /* نمایش تمام‌صفحه لایت‌باکس */
     .viewer {
       position: fixed;
       inset: 0;
@@ -205,137 +327,143 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 68px 18px 24px;
-      background: rgba(2, 7, 14, .97);
-      backdrop-filter: blur(12px);
+      padding: 75px 20px 30px;
+      background: rgba(3, 8, 16, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      opacity: 0;
+      transition: opacity 0.25s ease;
     }
 
     .viewer.open {
       display: flex;
-    }
-
-    .viewer:fullscreen {
-      background: #02070e;
+      opacity: 1;
     }
 
     .viewer-toolbar {
       position: absolute;
-      top: 14px;
-      left: 16px;
-      right: 16px;
+      top: 16px;
+      left: 20px;
+      right: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
+      padding: 10px 18px;
+      background: rgba(14, 27, 44, 0.85);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
     }
 
     .viewer-title {
       color: var(--text);
-      font-size: 13px;
-      font-weight: bold;
-      line-height: 1.8;
+      font-size: 13.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 60%;
     }
 
     .viewer-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .viewer-btn {
-      min-height: 40px;
-      padding: 7px 13px;
-      border: 1px solid #45566a;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 38px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 10px;
       color: var(--text);
-      background: #122238;
+      background: rgba(255, 255, 255, 0.05);
       cursor: pointer;
-      font-size: 12px;
+      font-size: 12.5px;
+      font-weight: 600;
       white-space: nowrap;
-      transition: background .2s, border-color .2s;
+      transition: all 0.2s ease;
     }
 
     .viewer-btn:hover {
-      background: #203650;
+      background: rgba(242, 173, 51, 0.15);
       border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .viewer-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
     }
 
     .close-btn {
-      color: #fff;
-      border-color: #80514b;
-      background: #3a1d20;
+      color: #f87171;
+      border-color: rgba(239, 68, 68, 0.25);
+      background: rgba(239, 68, 68, 0.1);
     }
 
     .close-btn:hover {
-      background: #622a2d;
+      background: #ef4444;
+      border-color: #ef4444;
+      color: #ffffff;
     }
 
     .viewer-image {
       display: block;
       max-width: 100%;
-      max-height: calc(100vh - 115px);
+      max-height: calc(100vh - 130px);
       width: auto;
       height: auto;
       object-fit: contain;
-      border-radius: 4px;
-      box-shadow: 0 12px 60px #0008;
+      border-radius: 8px;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7);
+      animation: zoomIn 0.25s ease;
     }
 
-    .viewer:fullscreen .viewer-image {
-      max-height: calc(100vh - 100px);
+    @keyframes zoomIn {
+      from { transform: scale(0.96); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .viewer-help {
-      margin-top: 12px;
-      color: #8fa1b6;
-      font-size: 11px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 11.5px;
       text-align: center;
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 700px) {
       .gallery {
         grid-template-columns: 1fr;
       }
 
       .top {
-        align-items: flex-start;
-      }
-
-      .image-frame {
-        min-height: 190px;
+        padding: 10px 14px;
       }
 
       .cert h2 {
-        min-height: 0;
-      }
-
-      .viewer {
-        padding: 82px 10px 20px;
+        min-height: auto;
       }
 
       .viewer-toolbar {
         top: 10px;
         left: 10px;
         right: 10px;
-        align-items: flex-start;
       }
 
       .viewer-title {
-        max-width: 42%;
+        max-width: 45%;
         font-size: 11px;
-      }
-
-      .viewer-actions {
-        gap: 5px;
       }
 
       .viewer-btn {
-        padding: 7px 9px;
+        padding: 6px 10px;
         font-size: 11px;
-      }
-
-      .viewer-image {
-        max-height: calc(100vh - 145px);
       }
     }
   </style>
@@ -347,33 +475,45 @@
 
     <header class="top">
       <a class="brand" href="../index.html">
-        فراز تست
-        <small>FARAZ TEST</small>
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="brand-title">
+          فراز تست
+          <small>FARAZ TEST</small>
+        </div>
       </a>
 
-      <a class="back" href="../index.html">
-        ← بازگشت به صفحه اصلی
+      <a class="back-btn" href="../index.html">
+        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        بازگشت به صفحه اصلی
       </a>
     </header>
 
     <section class="intro">
-      <span class="eyebrow">مدارک و گواهی‌ها</span>
+      <div class="eyebrow">
+        <span>مدارک و تاییدیه‌ها</span>
+      </div>
 
-      <h1>گواهی تست و تحویل تاسیسات برقی</h1>
+      <h1>گواهی تست و تحویل تأسیسات برقی</h1>
 
       <p class="desc">
-        گواهی‌های سازمان آموزش فنی و حرفه‌ای کشور
+        گواهی‌های رسمی صادره از سازمان آموزش فنی و حرفه‌ای کشور
       </p>
     </section>
 
     <section class="gallery" aria-label="گواهی‌های تست و تحویل تاسیسات برقی">
 
       <!-- گواهی فرشید دهقانی -->
-
       <article class="cert">
-        <h2>گواهی تست و تحویل تاسیسات برقی - فرشید دهقانی</h2>
+        <h2>
+          <span class="cert-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </span>
+          گواهی تست و تحویل تأسیسات برقی — مهندس فرشید دهقانی
+        </h2>
 
-        <div class="image-frame">
+        <div class="image-frame" onclick="openViewer(this.querySelector('img'))">
           <img
             class="certificate-image"
             src="../images/certificate-3.jpg"
@@ -381,29 +521,31 @@
             tabindex="0"
             role="button"
             aria-label="نمایش بزرگ گواهی فرشید دهقانی"
-            onclick="openViewer(this)"
             onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openViewer(this)}"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block';this.parentElement.querySelector('.image-badge').style.display='none';"
           >
 
           <p class="missing" style="display:none">
-            تصویر گواهی بارگذاری نشده است.
-            <br>
-            فایل certificate-3.jpg را در پوشه images بررسی کنید.
+            ⚠️ تصویر گواهی بارگذاری نشد.<br>
+            لطفاً فایل <code>certificate-3.jpg</code> را در پوشه <code>images</code> بررسی نمایید.
           </p>
-        </div>
 
-        <p class="image-action">
-          برای مشاهده بزرگ‌تر، روی تصویر کلیک کنید
-        </p>
+          <div class="image-badge">
+            🔍 کلیک جهت بزرگ‌نمایی
+          </div>
+        </div>
       </article>
 
       <!-- گواهی آزیتا نژادی کلاریجانی -->
-
       <article class="cert">
-        <h2>گواهی تست و تحویل تاسیسات برقی - آزیتا نژادی کلاریجانی</h2>
+        <h2>
+          <span class="cert-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </span>
+          گواهی تست و تحویل تأسیسات برقی — مهندس آزیتا نژادی کلاریجانی
+        </h2>
 
-        <div class="image-frame">
+        <div class="image-frame" onclick="openViewer(this.querySelector('img'))">
           <img
             class="certificate-image"
             src="../images/certificate-4.jpg"
@@ -411,38 +553,34 @@
             tabindex="0"
             role="button"
             aria-label="نمایش بزرگ گواهی آزیتا نژادی کلاریجانی"
-            onclick="openViewer(this)"
             onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openViewer(this)}"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block';this.parentElement.querySelector('.image-badge').style.display='none';"
           >
 
           <p class="missing" style="display:none">
-            تصویر گواهی بارگذاری نشده است.
-            <br>
-            فایل certificate-4.jpg را در پوشه images بررسی کنید.
+            ⚠️ تصویر گواهی بارگذاری نشد.<br>
+            لطفاً فایل <code>certificate-4.jpg</code> را در پوشه <code>images</code> بررسی نمایید.
           </p>
-        </div>
 
-        <p class="image-action">
-          برای مشاهده بزرگ‌تر، روی تصویر کلیک کنید
-        </p>
+          <div class="image-badge">
+            🔍 کلیک جهت بزرگ‌نمایی
+          </div>
+        </div>
       </article>
 
     </section>
 
     <p class="hint">
-      برای مشاهده جزئیات هر گواهی، روی تصویر آن کلیک کنید.
-      امکان بزرگ‌نمایی و ورود به حالت تمام‌صفحه نیز فراهم است.
+      💡 برای بررسی ریزنمرات و مشخصات هر مدرک، روی تصویر آن کلیک کنید تا در اندازه اصلی و تمام‌صفحه باز شود.
     </p>
 
     <footer>
-      © FARAZ TEST — Electrical Testing &amp; Commissioning
+      © FARAZ TEST — <strong>Electrical Testing &amp; Commissioning</strong>
     </footer>
 
   </main>
 
-  <!-- پنجره نمایش تمام‌صفحه -->
-
+  <!-- پنجره نمایش تمام‌صفحه (Lightbox) -->
   <div
     class="viewer"
     id="certificateViewer"
@@ -454,13 +592,11 @@
   >
 
     <div class="viewer-toolbar">
-
       <div class="viewer-title" id="viewerTitle">
-        گواهی تست و تحویل تاسیسات برقی
+        گواهی تست و تحویل تأسیسات برقی
       </div>
 
       <div class="viewer-actions">
-
         <button
           type="button"
           class="viewer-btn"
@@ -478,7 +614,6 @@
         >
           ✕ بستن
         </button>
-
       </div>
     </div>
 
@@ -490,7 +625,7 @@
     >
 
     <div class="viewer-help">
-      برای خروج از حالت تمام‌صفحه، کلید Esc را فشار دهید.
+      برای بستن پنجره کلیک روی پس‌زمینه یا کلید Esc را فشار دهید.
     </div>
 
   </div>
@@ -504,7 +639,7 @@
     let previousFocus = null;
 
     function openViewer(image) {
-      if (!image || !image.naturalWidth) return;
+      if (!image || !image.src) return;
 
       previousFocus = image;
 
@@ -545,9 +680,7 @@
       if (document.fullscreenElement) {
         try {
           await document.exitFullscreen();
-        } catch (error) {
-          // در صورت ناموفق بودن خروج، پنجره همچنان بسته می‌شود.
-        }
+        } catch (error) {}
       }
 
       viewer.classList.remove("open");
