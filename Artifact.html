@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فراز تست | سامانه محاسبه حق‌الزحمه تمدید قرارداد نظارت</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070d18;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --gold: #f59e0b;
+      --gold-hover: #d97706;
+      --cyan: #38bdf8;
+      --success: #10b981;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 16px 60px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* دکمه بازگشت */
+    .back-nav {
+      margin-bottom: 20px;
+    }
+
+    /* هدر چسبان و شیشه‌ای */
+    .topbar-wrapper {
+      position: sticky;
+      top: 14px;
+      z-index: 100;
+      margin-bottom: 30px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .back-btn:hover {
+      background: rgba(56, 189, 248, 0.05);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    header {
+      text-align: center;
+      padding: 10px 10px 40px;
+    }
+
+    .badge-sub {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    h1.brand-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    h1.brand-title span {
+      color: var(--gold);
+    }
+
+    p.brand-en {
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    p.brand-desc {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .calc-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      margin: 30px 0 50px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--cyan));
+    }
+
+    .calc-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .calc-header h2 {
+      font-size: 1.45rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .calc-header p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .contract-selection {
+      background: rgba(11, 23, 38, 0.7);
+      border: 1px solid var(--card-border);
+      padding: 16px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .contract-selection span {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .radio-pill-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .radio-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .radio-pill:has(input:checked) {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--gold);
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .grid-fields {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 640px) {
+      .grid-fields { grid-template-columns: 1fr; }
+      .calc-card { padding: 20px; }
+      .contract-selection { flex-direction: column; align-items: flex-start; }
+      .export-buttons { grid-template-columns: 1fr !important; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .form-group input, 
+    .form-group select {
+      width: 100%;
+      height: 48px;
+      padding: 0 14px;
+      background: #09121f;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.92rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus, 
+    .form-group select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+    }
+
+    .form-group small {
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* چک‌باکس بافت فرسوده */
+    .checkbox-container {
+      grid-column: 1 / -1;
+      background: rgba(11, 23, 38, 0.7);
+      border: 1px solid var(--card-border);
+      padding: 14px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-container input {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .checkbox-container label {
+      cursor: pointer;
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .calc-btn {
+      width: 100%;
+      height: 50px;
+      margin-top: 26px;
+      background: linear-gradient(135deg, var(--gold), #ea580c);
+      border: none;
+      border-radius: 12px;
+      color: #050b14;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 20px -8px rgba(245, 158, 11, 0.5);
+      transition: transform 0.15s, opacity 0.2s;
+    }
+
+    .calc-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .error-box {
+      margin-top: 18px;
+      padding: 12px 16px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 10px;
+      color: #fca5a5;
+      font-size: 0.88rem;
+      display: none;
+    }
+
+    .result-box {
+      margin-top: 26px;
+      background: rgba(8, 16, 28, 0.85);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+      display: none;
+    }
+
+    .res-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+      font-size: 0.92rem;
+    }
+
+    .res-row:last-of-type {
+      border-bottom: none;
+      padding-top: 16px;
+    }
+
+    .res-row span.label {
+      color: var(--muted);
+    }
+
+    .res-row span.value {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .res-total {
+      font-size: 1.2rem !important;
+      color: var(--gold) !important;
+      font-weight: 800 !important;
+    }
+
+    .tag-status {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .tag-valid { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tag-expired { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+    /* دکمه‌های اشتراک و خروجی */
+    .export-section {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .export-title {
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      margin-bottom: 14px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .recipient-input-wrapper {
+      margin-bottom: 16px;
+      background: rgba(11, 23, 38, 0.6);
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px dashed var(--card-border);
+    }
+
+    .recipient-input-wrapper label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .recipient-input-wrapper input {
+      width: 100%;
+      height: 42px;
+      padding: 0 12px;
+      background: #09121f;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .recipient-input-wrapper input:focus {
+      border-color: var(--cyan);
+    }
+
+    .export-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .btn-export {
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #1e293b;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-export:hover {
+      background: #334155;
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp {
+      background: rgba(37, 211, 102, 0.15);
+      border-color: rgba(37, 211, 102, 0.4);
+      color: #4ade80;
+    }
+    .btn-whatsapp:hover {
+      background: rgba(37, 211, 102, 0.25);
+      border-color: #22c55e;
+    }
+
+    .btn-bale {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+    .btn-bale:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: #0284c7;
+    }
+
+    .btn-sms {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+    }
+    .btn-sms:hover {
+      background: rgba(245, 158, 11, 0.25);
+      border-color: #f59e0b;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 24px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <div class="back-nav">
+    <a href="index.html" class="back-btn">← بازگشت به صفحه اصلی</a>
+  </div>
+
+  <header>
+    <div class="badge-sub">خدمات تخصصی مهندسی برق ساختمان</div>
+    <h1 class="brand-title">فـراز <span>تـسـت</span></h1>
+    <p class="brand-en">FARAZ TEST • ELECTRICAL TESTING</p>
+    <p class="brand-desc">
+      ارائه خدمات تخصصی آزمون، ارزیابی و اندازه‌گیری پارامترهای ایمنی برق مطابق با مبحث ۱۳ مقررات ملی ساختمان.
+    </p>
+  </header>
+
+  <!-- بخش محاسبه‌گر -->
+  <section class="calc-card" id="calculator">
+    <div class="calc-header">
+      <h2>سامانه محاسبه حق‌الزحمه تمدید قرارداد نظارت</h2>
+      <p>محاسبه هوشمند بر اساس ضوابط نظام مهندسی ساختمان</p>
+    </div>
+
+    <form id="calcForm" onsubmit="event.preventDefault(); runCalculation();">
+      
+      <div class="contract-selection">
+        <span>آیا قرارداد نظارت منعقد شده است؟</span>
+        <div class="radio-pill-group">
+          <label class="radio-pill">
+            <input type="radio" name="contractStatus" value="yes" checked onchange="toggleCapacityInput()">
+            بله، قرارداد دارم
+          </label>
+          <label class="radio-pill">
+            <input type="radio" name="contractStatus" value="no" onchange="toggleCapacityInput()">
+            خیر، بدون قرارداد
+          </label>
+        </div>
+      </div>
+
+      <div class="grid-fields">
+        
+        <div class="form-group" id="capacityGroup">
+          <label>تاریخ کسر ظرفیت</label>
+          <input type="text" id="capacityDate" placeholder="مثال: ۱۴۰۲/۰۱/۱۵">
+          <small>فرمت: سال/ماه/روز</small>
+        </div>
+
+        <div class="form-group">
+          <label>تاریخ صدور پروانه ساختمانی</label>
+          <input type="text" id="permitDate" placeholder="مثال: ۱۴۰۲/۰۳/۱۰" required>
+          <small>فرمت: سال/ماه/روز</small>
+        </div>
+
+        <div class="form-group">
+          <label>تاریخ روز جاری</label>
+          <input type="text" id="todayDate" required>
+          <small>به‌طور خودکار تاریخ امروز درج شده است</small>
+        </div>
+
+        <div class="form-group">
+          <label>گروه ساختمانی</label>
+          <select id="buildingGroup">
+            <option value="A">گروه الف (مدت پایه: ۱۸ ماه)</option>
+            <option value="B">گروه ب (مدت پایه: ۱۸ ماه)</option>
+            <option value="C">گروه ج (مدت پایه: ۱۸ ماه)</option>
+            <option value="D">گروه د (مدت پایه: ۲۴ ماه)</option>
+          </select>
+          <small>در صورت عدم درج مدت در فیلد زیر اعمال می‌شود</small>
+        </div>
+
+        <div class="form-group">
+          <label>مدت قرارداد (ماه) — اختیاری</label>
+          <input type="text" id="customDuration" placeholder="مثلاً: ۲۴">
+          <small>در صورت وارد کردن مدت قرارداد، این مدت ملاک خواهد بود .در غیر این صورت به صورت پیشفرض مطابق با گروه ساختمانی لحاظ می شود.</small>
+        </div>
+
+        <div class="form-group">
+          <label>متراژ زیربنا (مترمربع)</label>
+          <input type="text" id="area" placeholder="مثال: ۸۵۰" required>
+          <small>متراژ مندرج در پروانه ساختمانی</small>
+        </div>
+
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label>تعرفه نظارت هر مترمربع (ریال)</label>
+          <input type="text" id="tariff" placeholder="مبلغ تعرفه به ریال" required>
+          <small>تعرفه مصوب متناسب با متراژ و گروه ساختمانی</small>
+        </div>
+
+        <!-- تیک بافت فرسوده -->
+        <div class="checkbox-container">
+          <input type="checkbox" id="wornTexture">
+          <label for="wornTexture">پروژه در بافت فرسوده قرار دارد (محاسبه حق‌الزحمه با ۵۰٪ تخفیف)</label>
+        </div>
+
+      </div>
+
+      <button type="submit" class="calc-btn">محاسبه حق‌الزحمه تمدید</button>
+      <div id="errorMsg" class="error-box"></div>
+    </form>
+
+    <!-- نتیجه محاسبه -->
+    <div id="resultBox" class="result-box">
+      <div class="res-row">
+        <span class="label">تاریخ صدور پروانه ساختمانی:</span>
+        <span class="value" id="outPermit"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">تاریخ شروع ملاک نظارت:</span>
+        <span class="value" id="outStart"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">مدت زمان قرارداد اعمال شده:</span>
+        <span class="value" id="outDuration"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">تاریخ پایان اولیه قرارداد:</span>
+        <span class="value" id="outEnd"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">وضعیت اعتبار قرارداد:</span>
+        <span class="value" id="outStatus"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">مدت زمان تمدید قرارداد:</span>
+        <span class="value" id="outPeriods"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">تاریخ پایان پس از تمدید:</span>
+        <span class="value" id="outNewEnd"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">تعرفه نظارت مبنا:</span>
+        <span class="value" id="outTariff"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">وضعیت بافت فرسوده:</span>
+        <span class="value" id="outWorn"></span>
+      </div>
+      <div class="res-row">
+        <span class="label">حق‌الزحمه قابل پرداخت تمدید:</span>
+        <span class="value res-total" id="outFee"></span>
+      </div>
+
+      <!-- دکمه‌های دریافت و ارسال گزارش -->
+      <div class="export-section">
+        <div class="export-title">ارسال یا ذخیره گزارش محاسبه</div>
+        
+        <!-- فیلد شماره همراه مخاطب -->
+        <div class="recipient-input-wrapper">
+          <label>شماره تماس مخاطب (اختیاری - جهت ارسال مستقیم به فرد مدنظر):</label>
+          <input type="tel" id="recipientPhone" placeholder="مثال: 09171234567">
+        </div>
+
+        <div class="export-buttons">
+          <button type="button" class="btn-export btn-whatsapp" onclick="sendToWhatsApp()">
+            💬 واتساپ
+          </button>
+          <button type="button" class="btn-export btn-bale" onclick="sendToBale()">
+            🌀 بله
+          </button>
+          <button type="button" class="btn-export btn-sms" onclick="sendViaSMS()">
+            ✉️ پیامک (SMS)
+          </button>
+          <button type="button" class="btn-export" onclick="shareGeneral()">
+            📲 ایتا / سایر برنامه‌ها
+          </button>
+          <button type="button" class="btn-export" style="grid-column: 1 / -1;" onclick="downloadTxtReport()">
+            💾 دانلود فایل متنی (.TXT)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>فراز تست — دارای صلاحیت رسمی تست و تحویل تأسیسات از سازمان نظام مهندسی</p>
+    <p style="margin-top: 6px; font-size: 0.8rem;">تماس و هماهنگی: 09915678210 - 09303490051</p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  const groupDefaults = { A: 18, B: 18, C: 18, D: 24 };
+  let currentReportText = "";
+
+  function toLatinDigits(str) {
+    return String(str || '')
+      .replace(/[۰-۹]/g, c => String(c.charCodeAt(0) - 1776))
+      .replace(/[٠-٩]/g, c => String(c.charCodeAt(0) - 1632));
+  }
+
+  function isLeapJalali(year) {
+    return ((((year + 39) * 682) % 2816) < 682);
+  }
+
+  function jalaliToDays(y, m, d) {
+    let days = 0;
+    for (let yr = 1300; yr < y; yr++) {
+      days += (isLeapJalali(yr) ? 366 : 365);
+    }
+    for (let mo = 1; mo < m; mo++) {
+      if (mo <= 6) days += 31;
+      else days += 30;
+    }
+    days += d;
+    return days;
+  }
+
+  function readDate(id, label) {
+    const raw = toLatinDigits(document.getElementById(id).value).trim().replace(/\s*[-/]\s*/g, '/');
+    const match = /^(\d{4})\/(\d{1,2})\/(\d{1,2})$/.exec(raw);
+    if (!match) throw new Error(label + " را با فرمت سال/ماه/روز (مثلاً ۱۴۰۲/۰۳/۱۵) وارد کنید.");
+    
+    const y = parseInt(match[1], 10);
+    const m = parseInt(match[2], 10);
+    const d = parseInt(match[3], 10);
+
+    if (m < 1 || m > 12 || d < 1 || d > 31) throw new Error(label + " نامعتبر است.");
+    if (m > 6 && d === 31) throw new Error("ماه‌های نیمه دوم سال ۳۱ روزه نیستند.");
+
+    return { y, m, d, days: jalaliToDays(y, m, d) };
+  }
+
+  function addMonthsToDate(dateObj, monthsToAdd) {
+    let totalM = dateObj.m + monthsToAdd;
+    let y = dateObj.y + Math.floor((totalM - 1) / 12);
+    let m = ((totalM - 1) % 12) + 1;
+    let maxDays = (m <= 6) ? 31 : (m <= 11 ? 30 : (isLeapJalali(y) ? 30 : 29));
+    let d = Math.min(dateObj.d, maxDays);
+    return { y, m, d, days: jalaliToDays(y, m, d) };
+  }
+
+  function formatFaDate(dObj) {
+    const str = `${dObj.y}/${String(dObj.m).padStart(2, '0')}/${String(dObj.d).padStart(2, '0')}`;
+    return str.replace(/\d/g, c => "۰۱۲۳۴۵۶۷۸۹"[Number(c)]);
+  }
+
+  function parseNumber(elemId, fieldName) {
+    const clean = toLatinDigits(document.getElementById(elemId).value).replace(/[٬,،\s]/g, '');
+    const num = Number(clean);
+    if (isNaN(num) || num <= 0) throw new Error("لطفاً مقدار عددی معتبری برای " + fieldName + " وارد کنید.");
+    return num;
+  }
+
+  window.toggleCapacityInput = function() {
+    const hasContract = document.querySelector('input[name="contractStatus"]:checked').value === 'yes';
+    document.getElementById('capacityGroup').style.display = hasContract ? 'flex' : 'none';
+  };
+
+  function initTodayDate() {
+    try {
+      const today = new Date();
+      const str = new Intl.DateTimeFormat('fa-IR-u-nu-latn', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(today);
+      const clean = str.replace(/\u200f/g, '').replace(/\//g, '/');
+      document.getElementById('todayDate').value = clean.replace(/\d/g, c => "۰۱۲۳۴۵۶۷۸۹"[Number(c)]);
+    } catch(e) {
+      document.getElementById('todayDate').value = "۱۴۰۳/۰۸/۱۵";
+    }
+  }
+  initTodayDate();
+
+  window.runCalculation = function() {
+    const errBox = document.getElementById('errorMsg');
+    const resBox = document.getElementById('resultBox');
+    errBox.style.display = 'none';
+    resBox.style.display = 'none';
+
+    try {
+      const hasContract = document.querySelector('input[name="contractStatus"]:checked').value === 'yes';
+      const permit = readDate('permitDate', 'تاریخ صدور پروانه');
+      const today = readDate('todayDate', 'تاریخ روز جاری');
+      const grp = document.getElementById('buildingGroup').value;
+      const customDur = toLatinDigits(document.getElementById('customDuration').value).trim();
+      const area = parseNumber('area', 'متراژ زیربنا');
+      const tariff = parseNumber('tariff', 'تعرفه هر مترمربع');
+      const isWorn = document.getElementById('wornTexture').checked;
+
+      let durationMonths;
+      let durationNote = '';
+      if (customDur !== '') {
+        const d = parseInt(customDur, 10);
+        if (isNaN(d) || d <= 0) throw new Error("مدت قرارداد باید یک عدد صحیح (تعداد ماه) باشد.");
+        durationMonths = d;
+        durationNote = ' (ثبت دستی)';
+      } else {
+        durationMonths = groupDefaults[grp];
+        durationNote = ' (پیش‌فرض گروه ساختمانی)';
+      }
+
+      let start;
+      if (!hasContract) {
+        start = permit;
+      } else {
+        const capacity = readDate('capacityDate', 'تاریخ کسر ظرفیت');
+        if (permit.days < capacity.days) {
+          throw new Error("تاریخ صدور پروانه نمی‌تواند قبل از تاریخ کسر ظرفیت باشد.");
+        }
+        const capPlus3M = addMonthsToDate(capacity, 3);
+        start = (permit.days < capPlus3M.days) ? permit : capPlus3M;
+      }
+
+      if (today.days < start.days) {
+        throw new Error("تاریخ روز جاری نمی‌تواند قبل از شروع قرارداد باشد.");
+      }
+
+      const end = addMonthsToDate(start, durationMonths);
+      const diffDays = today.days - end.days;
+
+      const fa = n => new Intl.NumberFormat('fa-IR').format(n);
+      document.getElementById('outPermit').textContent = formatFaDate(permit);
+      document.getElementById('outStart').textContent = formatFaDate(start);
+      document.getElementById('outDuration').textContent = `${fa(durationMonths)} ماه ${durationNote}`;
+      document.getElementById('outEnd').textContent = formatFaDate(end);
+      document.getElementById('outTariff').textContent = `${fa(tariff)} ریال`;
+      document.getElementById('outWorn').textContent = isWorn ? 'بله (تخفیف ۵۰٪ اعمال شد)' : 'خیر (تعرفه عادی)';
+
+      let periods = 0;
+      let extendedEnd = end;
+      let fee = 0;
+
+      if (diffDays <= 0) {
+        const leftDays = Math.abs(diffDays);
+        document.getElementById('outStatus').innerHTML = `<span class="tag-status tag-valid">دارای اعتبار (${fa(leftDays)} روز تا پایان)</span>`;
+        document.getElementById('outPeriods').textContent = '۰ ماه (عدم نیاز به تمدید)';
+        document.getElementById('outNewEnd').textContent = '—';
+        document.getElementById('outFee').textContent = '۰ ریال';
+      } else {
+        while (extendedEnd.days < today.days) {
+          periods++;
+          extendedEnd = addMonthsToDate(end, periods * 3);
+        }
+
+        const baseFee = periods * 0.1 * area * tariff;
+        fee = isWorn ? Math.round(baseFee * 0.5) : Math.round(baseFee);
+
+        document.getElementById('outStatus').innerHTML = `<span class="tag-status tag-expired">منقضی شده (${fa(diffDays)} روز گذشته)</span>`;
+        document.getElementById('outPeriods').textContent = `${fa(periods * 3)} ماه (${fa(periods)} دوره ۳ ماهه)`;
+        document.getElementById('outNewEnd').textContent = formatFaDate(extendedEnd);
+        document.getElementById('outFee').textContent = `${fa(fee)} ریال`;
+      }
+
+      currentReportText = 
+`📋 گزارش محاسبه حق‌الزحمه تمدید قرارداد نظارت
+───────────────
+▪ تاریخ صدور پروانه: ${formatFaDate(permit)}
+▪ تاریخ شروع قرارداد: ${formatFaDate(start)}
+▪ تاریخ پایان اولیه: ${formatFaDate(end)}
+▪ مدت زمان تمدید: ${periods > 0 ? (periods * 3) + ' ماه (' + periods + ' دوره ۳ ماهه)' : 'عدم نیاز به تمدید'}
+▪ تاریخ پایان پس از تمدید: ${periods > 0 ? formatFaDate(extendedEnd) : '—'}
+▪ تعرفه نظارت هر متر: ${fa(tariff)} ریال
+▪ متراژ زیربنا: ${fa(area)} مترمربع
+▪ وضعیت بافت فرسوده: ${isWorn ? 'دارد (۵۰٪ تخفیف)' : 'ندارد'}
+▪ حق‌الزحمه تمدید قرارداد: ${fa(fee)} ریال
+───────────────
+فراز تست | سامانه تخصصی برق ساختمان
+farshiddehghani.github.io/faraz-test`;
+
+      resBox.style.display = 'block';
+      resBox.scrollIntoView({ behavior: 'smooth' });
+
+    } catch (err) {
+      errBox.textContent = err.message;
+      errBox.style.display = 'block';
+    }
+  };
+
+  function getCleanPhone() {
+    let p = toLatinDigits(document.getElementById('recipientPhone').value).trim().replace(/[^0-9+]/g, '');
+    if (p.startsWith('09')) {
+      p = '98' + p.substring(1);
+    } else if (p.startsWith('+98')) {
+      p = p.substring(1);
+    }
+    return p;
+  }
+
+  // ۱. دانلود فایل تکست
+  window.downloadTxtReport = function() {
+    if (!currentReportText) return;
+    const blob = new Blob(["\uFEFF" + currentReportText], { type: "text/plain;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "گزارش-تمدید-قرارداد-نظارت.txt";
+    link.click();
+    URL.revokeObjectURL(link.href);
+  };
+
+  // ۲. ارسال با واتساپ (با شماره مستقیم در صورت وارد کردن)
+  window.sendToWhatsApp = function() {
+    if (!currentReportText) return;
+    const phone = getCleanPhone();
+    const encodedText = encodeURIComponent(currentReportText);
+    const url = phone ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodedText}` : `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(url, '_blank');
+  };
+
+  // ۳. ارسال از طریق بله
+  window.sendToBale = function() {
+    if (!currentReportText) return;
+    const encodedText = encodeURIComponent(currentReportText);
+    const url = `https://ble.ir/share/url?url=&text=${encodedText}`;
+    window.open(url, '_blank');
+  };
+
+  // ۴. ارسال پیامک مستقیم (SMS)
+  window.sendViaSMS = function() {
+    if (!currentReportText) return;
+    const phone = toLatinDigits(document.getElementById('recipientPhone').value).trim();
+    const encodedText = encodeURIComponent(currentReportText);
+    const smsUrl = phone ? `sms:${phone}?body=${encodedText}` : `sms:?body=${encodedText}`;
+    window.location.href = smsUrl;
+  };
+
+  // ۵. اشتراک عمومی (ایتا، روبیکا، تلگرام و غیره)
+  window.shareGeneral = function() {
+    if (!currentReportText) return;
+    if (navigator.share) {
+      navigator.share({
+        title: 'گزارش تمدید قرارداد نظارت',
+        text: currentReportText
+      }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(currentReportText).then(() => {
+        alert('متن گزارش در حافظه کپی شد. می‌توانید در پیام‌رسان ایتا یا هر برنامه دلخواه Paste کنید.');
+      });
+    }
+  };
+
+})();
+</script>
+</body>
+</html>
